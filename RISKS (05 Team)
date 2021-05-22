@@ -1,8 +1,7 @@
 /*Risks! for "05 Team: Identify Risks*/
 //List any risks:
   //UI 
-Mitigate: Just use a basic UI?
-
+Mitigate: Lisa will look into the User interface and have some drawings/ideas in 2 weeks.
   //Data input: RFID 
     //Camera permissions
     //Take Picture of ISBN barcode
@@ -19,4 +18,4 @@ Mitigate: Just use a basic UI?
 //Database
     //Cloud? (sharable?)
     //on device (it's mostly going to be Strings, so maybe?)
-  Mitigation:???
+  Mitigation: Lisa will look into using a spreadsheet like Google sheet for storage.
