@@ -24,4 +24,4 @@ Mitigate: Lisa will look into the User interface and have some drawings/ideas in
 //Database
     //Cloud? (sharable?)
     //on device (it's mostly going to be Strings, so maybe?)
-  Mitigation: Lisa will look into using a spreadsheet like Google sheet for storage.
+  Mitigation: The Library will be saved in a text file on the device. It will be saved in JSON strings.
