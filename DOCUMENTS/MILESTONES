@@ -1,7 +1,11 @@
 Lesson 09:
 - Read & write JSON (to logcat) -CAPTAIN
+- - store JSON of library in internal storage
+- - read internal storage to get Library Object
 - Display list of books -LISA
 - - Search page but "all books"
+- - List of Book titles via .getTitle() (scrollable) 
+- - All poages made but not functional 
 
 Lesson 11:
 - Add books:
@@ -10,7 +14,7 @@ Lesson 11:
 - Add/edit/delete Categories/Shelves 
 - - Search function (choose which categories)
 - UI 
-- - Add books button & activity
+- - Add books button & activity (All 4 pages functional)
 - - Shelves/CAtegory button activity
 
 Lesson 13 (Final Project):
