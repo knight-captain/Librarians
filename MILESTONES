@@ -1,0 +1,17 @@
+Lesson 09:
+- Read & write JSON (to logcat) -CAPTAIN
+- Display list of books -LISA
+- - Search page but "all books"
+
+Lesson 11:
+- Add books:
+- - API -CAPTAIN
+- - Manual
+- Add/edit/delete Categories/Shelves 
+- - Search function (choose which categories)
+- UI 
+- - Add books button & activity
+- - Shelves/CAtegory button activity
+
+Lesson 13 (Final Project):
+- Add Books via Camera/ISBN barcode
