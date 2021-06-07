@@ -1,33 +1,25 @@
 package com.example.biblio_tech_mark2;
 
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.biblio_tech_mark2.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    public static final String TAG = "TESING STUFF!!!!!!!!!";
-
-//    public void LoadLibrary (View view){
-//
-//    }
+    public static final String TAG = "!!!Main activity!!!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        Log.i(TAG,"1");
+        Log.i(TAG,"Loading test library");
+//        QuickSave.writeFileOnInternalStorage(this.getApplicationContext()); //TODO this is causing problems...
+
+        Log.i(TAG,"Starting loader and Thread");
         Loader loader = new Loader(this);
         Thread loading = new Thread((Runnable) loader, "loader");
         loading.start();
