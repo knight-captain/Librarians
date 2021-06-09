@@ -30,6 +30,7 @@ public class LibraryLoadFromJson {
         json = gson.fromJson(testJson, Shelf.class);
 
         //TODO Below needs to be fixed to android
+        //SQLite: https://developer.android.com/training/data-storage/sqlite
         Log.i(TAG,"this should save this file onto the device...");
         MainActivity.SaveData(json);
 
