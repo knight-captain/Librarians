@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static void SaveData(Shelf json){
         Log.i(TAG, "This should save the data, but doesn't");
+        //TEST COMMENT
     }
 
     public static void LoadData(){
