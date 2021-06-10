@@ -1,7 +1,7 @@
 Lesson 09:
 - Read & write JSON (to logcat) -CAPTAIN
-- - store JSON of library in internal storage
-- - read internal storage to get Library Object
+- - store JSON of library in internal storage//-> SQLite
+- - read internal storage to get Library Object//-> SQLite
 - Display list of books -LISA
 - - Search page but "all books"
 - - List of Book titles via .getTitle() (scrollable) 
