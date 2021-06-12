@@ -1,11 +1,12 @@
 Lesson 09:
 - Read & write JSON (to logcat) -CAPTAIN
-- - store JSON of library in internal storage//-> SQLite
-- - read internal storage to get Library Object//-> SQLite
+- - store JSON of library in internal storage//-> SQLite - DONE!
+- - read internal storage to get Library Object//-> SQLite -DONE!
 - Display list of books -LISA
 - - Search page but "all books"
 - - List of Book titles via .getTitle() (scrollable) 
 - - All poages made but not functional 
+- Get TestLibrary integrated into Mark 3 -> CAPTAIN
 
 Lesson 11:
 - Add books:
