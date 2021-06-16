@@ -2,7 +2,6 @@ package com.example.biblio_tech_mark_3;
 
 /*From: https://www.youtube.com/watch?v=312RhjfetP8&t=3108s*/
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+
+    public static final String TAG = "!!!DataBaseHelper activity!!!";
 
     public static final String BOOK_TABLE = "BOOK_TABLE";
     public static final String COLUMN_ID = "ID";
@@ -51,7 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public boolean addOne(Book bookModel) {
+    public boolean addOne(Book book) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -65,7 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return insert != -1;
     }
 
-    public boolean deleteOne(Book bookModel){
+    public boolean deleteOne(Book book){
 
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + BOOK_TABLE + " WHERE " + COLUMN_ID + " = " + book.getId();
