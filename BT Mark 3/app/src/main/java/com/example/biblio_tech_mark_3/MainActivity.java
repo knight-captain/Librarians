@@ -16,26 +16,34 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "!!!Main activity!!!";
     public static final String EXTRA_MESSAGE = "com.example.biblio_tech_mark_3.MESSAGE";
 
+    DataBaseHelper dataBaseHelper;
 
     public static void SaveData(Shelf json){
         Log.i(TAG, "This should save the data, but doesn't");
         //TEST COMMENT
     }
 
-    public static void LoadData(){
-        Log.i(TAG,"Starting loader and Thread");
-        Loader loader = new Loader();
-        Thread loading = new Thread((Runnable) loader, "loader");
-        loading.start();
+    public DataBaseHelper LoadData(){
+        Log.i(TAG,"making new DBHelper");
+//        Loader loader = new Loader();
+//        Thread loading = new Thread((Runnable) loader, "loader");
+//        loading.start();
+        dataBaseHelper = new DataBaseHelper(this);
+
+        Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
+        dataBaseHelper.addOne(test);
+        Log.i(TAG,"added test book: " + test.toString() + " and returning helper");
+
+        return dataBaseHelper;
     }
 
     public void ViewBooksButton(View view){
         //this button will take us to the view library screen
-        Log.i(TAG, "This should take you to your library, but doesn't");
+        Log.i(TAG, ", button clicked sending intent to ViewBooks");
         String test = "This is data";
 
         Intent intent = new Intent(this, ViewBooksActivity.class);
-        intent.putExtra(EXTRA_MESSAGE,test);
+        intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
         startActivity(intent);
     }
 
@@ -54,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LoadData();
+        dataBaseHelper = LoadData();
+        Log.i(TAG, "DBhelper " + dataBaseHelper);
 
     }
 }

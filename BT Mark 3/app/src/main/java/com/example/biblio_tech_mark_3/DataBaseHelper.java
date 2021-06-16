@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -100,6 +101,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "LibraryDB", null, 1);//pass these to the parent: SQLiteOpenHelper
-
+        Log.i(TAG,"HERE?");
     }
 }
