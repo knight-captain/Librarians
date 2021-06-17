@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.List;
+
 public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     public static final String TAG = "!!!ViewBooksActivity!!!";
@@ -31,12 +33,12 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
+        dataBaseHelper = new DataBaseHelper(this );
         Log.i(TAG,"this is where it breaks. DBH: " + dataBaseHelper);
-        dataBaseHelper = mainActivity.dataBaseHelper; //TODO getting a NULL here?
 
         //For testing
-        Book test = new Book(2, "TEST2", "1-234-56890-124-0", 101, false);
-        dataBaseHelper.addOne(test);
+//        Book test = new Book(2, "TEST2", "1-234-56890-124-0", 101, false);
+//        dataBaseHelper.addOne(test); //TODO not showing up
 
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.book_info);
@@ -61,16 +63,11 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
     //This updates the RecyclerView
     private void ShowBooksOnRecyclerView() {
-        dataBaseHelper = new DataBaseHelper(this );
-
         adapter = new MyRecyclerViewAdapter(this, dataBaseHelper.getAllBooks());
         recyclerView.setAdapter(adapter);
     }
 
     public ViewBooksActivity(){
-//        Context context = this.getApplicationContext();
 
-        mainActivity = (MainActivity) this.getParent();
-        Log.i(TAG, "Main? " + mainActivity); //TODO NULL???
     }
 }
