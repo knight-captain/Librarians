@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ViewBooksButton(View view){
         //this button will take us to the view library screen
-<<<<<<< Updated upstream
+
         Log.i(TAG, ", button clicked sending intent to ViewBooks");
         String test = "This is data";
 
@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
 //        intent.putExtra("DBH", dataBaseHelper);
 
-=======
+
         Log.i(TAG, "This should take you to your library, but doesn't");
         Intent intent =new Intent(this,ViewBooksActivity.class);
->>>>>>> Stashed changes
+
         startActivity(intent);
     }
 
