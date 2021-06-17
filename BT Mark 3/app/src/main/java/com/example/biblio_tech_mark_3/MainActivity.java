@@ -1,20 +1,16 @@
 package com.example.biblio_tech_mark_3;
 
-<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-=======
->>>>>>> Stashed changes
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-<<<<<<< Updated upstream
-=======
+
 import android.widget.Button;
 import android.widget.ImageView;
->>>>>>> Stashed changes
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Log.i(TAG, "This should take you to your library, but doesn't");
-        Intent intent =new Intent(this,ViewBooksActivity.class);
 
         startActivity(intent);
     }
@@ -91,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "DBhelper " + dataBaseHelper);
 
 // create search button
-        Button search_button = findViewById(R.id.search);
+        Button search_button = findViewById(R.id.viewBooks);
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewBooksButton();
+//                ViewBooksButton(this);
             }
         });
 // create the add book button
