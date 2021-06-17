@@ -56,7 +56,7 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number \" + position");
+        Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
     }
 
     //This updates the RecyclerView

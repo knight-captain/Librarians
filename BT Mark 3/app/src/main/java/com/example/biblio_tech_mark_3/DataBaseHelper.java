@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    public static final String TAG = "!!!DataBaseHelper activity!!!";
+    public static final String TAG = "!!!DataBaseHelper!!!";
 
     public static final String BOOK_TABLE = "BOOK_TABLE";
     public static final String COLUMN_ID = "ID";
@@ -101,6 +101,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "LibraryDB", null, 1);//pass these to the parent: SQLiteOpenHelper
-        Log.i(TAG,"HERE?");
+        Log.i(TAG, String.valueOf(context));
     }
 }

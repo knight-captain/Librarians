@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         //TEST COMMENT
     }
 
-    public DataBaseHelper LoadData(){
+    public void LoadData(){
         Log.i(TAG,"making new DBHelper");
 //        Loader loader = new Loader();
 //        Thread loading = new Thread((Runnable) loader, "loader");
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
         dataBaseHelper.addOne(test);
-        Log.i(TAG,"added test book: " + test.toString() + " and returning helper");
+        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
 
-        return dataBaseHelper;
+//        return dataBaseHelper;
     }
 
     public void ViewBooksButton(View view){
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ViewBooksActivity.class);
         intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
+//        intent.putExtra("DBH", dataBaseHelper);
+
         startActivity(intent);
     }
 
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataBaseHelper = LoadData();
+        LoadData();
         Log.i(TAG, "DBhelper " + dataBaseHelper);
 
     }

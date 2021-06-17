@@ -14,7 +14,7 @@ public class Loader extends AppCompatActivity implements Runnable{
 
     @Override
     public void run() {
-
+    //DataBaseHelper kinda took over this class's job. Will prolly delete it later
 
     }
 
