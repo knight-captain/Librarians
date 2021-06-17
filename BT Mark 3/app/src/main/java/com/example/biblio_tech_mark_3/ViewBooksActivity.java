@@ -1,5 +1,6 @@
 package com.example.biblio_tech_mark_3;
 
+<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+>>>>>>> Stashed changes
 
 import java.util.List;
 
@@ -24,12 +33,15 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
     DataBaseHelper dataBaseHelper;
 
+    private EditText titleID;
+    public static final String TAG = "!!!View activity!!!";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_books);
 
         Intent intent = getIntent();
+<<<<<<< Updated upstream
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
@@ -68,6 +80,13 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
     }
 
     public ViewBooksActivity(){
+=======
+        Log.i(TAG, "view point 1");
+
+        titleID = findViewById(R.id.view_title);
+        String title = titleID.getText().toString();
+        Log.i(TAG, title);
+>>>>>>> Stashed changes
 
     }
 }

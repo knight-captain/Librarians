@@ -1,15 +1,22 @@
 package com.example.biblio_tech_mark_3;
 
+<<<<<<< Updated upstream
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+=======
+>>>>>>> Stashed changes
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+<<<<<<< Updated upstream
+=======
+import android.widget.Button;
+import android.widget.ImageView;
+>>>>>>> Stashed changes
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.biblio_tech_mark_3.MESSAGE";
 
     DataBaseHelper dataBaseHelper;
+
+
 
     public static void SaveData(Shelf json){
         Log.i(TAG, "This should save the data, but doesn't");
@@ -39,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ViewBooksButton(View view){
         //this button will take us to the view library screen
+<<<<<<< Updated upstream
         Log.i(TAG, ", button clicked sending intent to ViewBooks");
         String test = "This is data";
 
@@ -46,26 +56,64 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
 //        intent.putExtra("DBH", dataBaseHelper);
 
+=======
+        Log.i(TAG, "This should take you to your library, but doesn't");
+        Intent intent =new Intent(this,ViewBooksActivity.class);
+>>>>>>> Stashed changes
         startActivity(intent);
     }
 
     public void AddBookButton(){
         //this will be the method linked to the "add book" button
         Log.i(TAG, "This should let you add a book to your library, but doesn't");
+        Intent intent =new Intent(this,AddBooksActivity.class);
+        startActivity(intent);
+
     }
 
     public void ManageShelves(){
         //this will be the method linked to the "manage shelves" button
         Log.i(TAG, "This should let you manage your shelves, but doesn't");
+        Intent intent =new Intent(this,ManageShelvesActivity.class);
+        startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //creates the book picture on the main screen
+        ImageView bookPic = (ImageView) findViewById(R.id.bookpic);
+        int imageResource = getResources().getIdentifier("@drawable/book",null,this.getPackageName());
+        bookPic.setImageResource(imageResource);
 
         LoadData();
         Log.i(TAG, "DBhelper " + dataBaseHelper);
 
+// create search button
+        Button search_button = findViewById(R.id.search);
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewBooksButton();
+            }
+        });
+// create the add book button
+        Button add_book_button = findViewById(R.id.add_book_button);
+        add_book_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 AddBookButton();
+            }
+        });
+
+// create the manage button
+        Button manage_library_button = findViewById(R.id.manage_library);
+        manage_library_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManageShelves();
+            }
+        });
     }
 }
