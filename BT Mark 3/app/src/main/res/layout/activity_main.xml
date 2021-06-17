@@ -58,13 +58,14 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/viewBooks"
         android:layout_width="154dp"
         android:layout_height="71dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="304dp"
-        android:text="Search by Title"
+        android:onClick="ViewBooksButton"
+        android:text="Browse Library"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

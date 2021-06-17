@@ -93,13 +93,11 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
 //            System.out.println("YO");
 //            Toast.makeText(MainActivity.this, "Deleted " /*+ swipedBook*/, Toast.LENGTH_SHORT).show();
 //        }
-
-
     }
 
     //This updates the RecyclerView
     private void ShowBooksOnRecyclerView() {
-        dataBaseHelper = new DataBaseHelper(MainActivity.this );
+//        dataBaseHelper = new DataBaseHelper(MainActivity.this );
 
         adapter = new MyRecyclerViewAdapter(MainActivity.this, dataBaseHelper.getAllBooks());
         recyclerView.setAdapter(adapter);
