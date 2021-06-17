@@ -1,14 +1,9 @@
 package com.example.biblio_tech_mark_3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -42,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //        return dataBaseHelper;
     }
 
-    public void ViewBooksButton(View view){
+    public void ViewBooksButton(){
         //this button will take us to the view library screen
 
         Log.i(TAG, ", button clicked sending intent to ViewBooks");
@@ -53,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
 //        intent.putExtra("DBH", dataBaseHelper);
 
 
-        Log.i(TAG, "This should take you to your library, but doesn't");
+        Log.i(TAG, "This takes you to view books.");
 
         startActivity(intent);
     }
 
     public void AddBookButton(){
         //this will be the method linked to the "add book" button
-        Log.i(TAG, "This should let you add a book to your library, but doesn't");
+        Log.i(TAG, "This takes you to the add book screen");
         Intent intent =new Intent(this,AddBooksActivity.class);
         startActivity(intent);
 
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ManageShelves(){
         //this will be the method linked to the "manage shelves" button
-        Log.i(TAG, "This should let you manage your shelves, but doesn't");
+        Log.i(TAG, "This takes you to manage library");
         Intent intent =new Intent(this,ManageShelvesActivity.class);
         startActivity(intent);
     }
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ViewBooksButton(this);
+                ViewBooksButton();
             }
         });
 // create the add book button

@@ -23,6 +23,8 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
     DataBaseHelper dataBaseHelper;
 
     private EditText titleID;
+
+
 //    public static final String TAG = "!!!View activity!!!";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +70,14 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
         recyclerView.setAdapter(adapter);
     }
 
-    public ViewBooksActivity(){
+//    public ViewBooksActivity(){
+//
+//        Log.i(TAG, "view point 1");
+//
+//        titleID = findViewById(R.id.view_title);
+//        String title = titleID.getText().toString();
+//        Log.i(TAG, title);
+//
 
-        Log.i(TAG, "view point 1");
-
-        titleID = findViewById(R.id.view_title);
-        String title = titleID.getText().toString();
-        Log.i(TAG, title);
-
-
-    }
+//    }
 }
