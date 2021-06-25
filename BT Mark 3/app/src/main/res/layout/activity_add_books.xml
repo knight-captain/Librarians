@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".AddBooksActivity">
 
+    <Button
+        android:id="@+id/addISBNButton"
+        android:layout_width="71dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/addISBNButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addISBN" />
+
     <EditText
         android:id="@+id/addTitle"
         android:layout_width="250dp"
@@ -37,7 +48,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="76dp"
         android:text="@string/addISBN_label"
         android:textSize="20sp"
         app:autoSizeTextType="uniform"
@@ -81,11 +92,22 @@
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="164dp"
         android:ems="10"
         android:hint="@string/addISBN"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/addISBN_label"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addTitleButton"
+        android:layout_width="71dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/addTitleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

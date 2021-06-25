@@ -12,7 +12,9 @@
     <string name="keywordbutton">Keyword</string>
     <string name="addTitle_label">Add by Title:</string>
     <string name="addTitle">Title</string>
+    <string name="addTitleButton">Add</string>
     <string name="addISBN_label">Add by ISBN:</string>
     <string name="addISBN">ISBN</string>
+    <string name="addISBNButton">Add</string>
 
 </resources>

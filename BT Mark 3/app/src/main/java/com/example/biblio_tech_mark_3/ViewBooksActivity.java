@@ -103,7 +103,7 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
     String title = text.getText().toString();
     Log.i(TAG, "You clicked the title button" + title);
 
-        // search the library by title
+        // search the library by title and display results
     }
 
     public void authorSearch(){
@@ -112,7 +112,7 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
         String author = text.getText().toString();
         Log.i(TAG, "You clicked the author button" + author);
 
-        // search the library by author
+        // search the library by author and display results
     }
     public void keywordSearch(){
         // get the keyword to search for
@@ -120,6 +120,6 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
         String keyword = text.getText().toString();
         Log.i(TAG, "You clicked the keyword button" + keyword);
 
-        // search the library by keyword
+        // search the library by keyword and display results
     }
 }
