@@ -2,7 +2,9 @@ package com.example.biblio_tech_mark_3;
 
 /*From: https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example*/
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +17,22 @@ import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
+    public static final String TAG = "!!!ViewBooksActivity!!!";
+
     private List<Book> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private DataBaseHelper dbh;
+    private Context viewBooksActivity;
 
     // data is passed into the constructor
-    MyRecyclerViewAdapter(Context context, List<Book> data) {
+    MyRecyclerViewAdapter(Context context, DataBaseHelper data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.mData = data.getAllBooks();
+        this.dbh = data;
+        this.viewBooksActivity = context;
+
+        System.out.println(("@ MyRecyclerViewAdapter mClickListener = " + mClickListener));
     }
 
     // inflates the row layout from xml when needed
@@ -40,33 +50,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // total number of rows
-    @Override
     public int getItemCount() {
         return mData.size();
-    }
-
-
-    // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            myTextView = itemView.findViewById(R.id.bookRowName);
-            itemView.setOnClickListener(this);
-        }
-        //Todo this is where the click happens
-        @Override
-        public void onClick(View view) {
-            System.out.println(getItem(getAdapterPosition()).getEntries__title()); //TODO THIS WORKS
-
-
-            if (mClickListener != null) {
-                mClickListener.onItemClick(view, getAdapterPosition());
-            }
-
-
-        }
     }
 
     // convenience method for getting data at click position
@@ -77,10 +62,35 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
+        System.out.println(("@ setClickListener mClickListener = " + mClickListener));
     }
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
+    // stores and recycles views as they are scrolled off screen
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView myTextView;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            myTextView = itemView.findViewById(R.id.bookRowName);
+            itemView.setOnClickListener(this);
+        }
+
+        //this is where the click happens
+        @Override
+        public void onClick(View view) {
+
+            if (mClickListener != null) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+                // this sends the click to ViewBooksActivity.onItemClick()
+            } else {
+                System.out.println("mClickListener = " + mClickListener);
+            }
+        }
+    }
+
 }

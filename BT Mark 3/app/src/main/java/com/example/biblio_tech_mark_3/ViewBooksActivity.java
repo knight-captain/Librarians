@@ -16,14 +16,10 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
     public static final String TAG = "!!!ViewBooksActivity!!!";
 
-    MainActivity mainActivity;
-    EditText find_input;
     RecyclerView recyclerView;
     MyRecyclerViewAdapter adapter;
 
     DataBaseHelper dataBaseHelper;
-
-    private EditText titleID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +33,6 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
         dataBaseHelper = new DataBaseHelper(this );
 
-        Button titlebutton = findViewById(R.id.titlebutton);
-        titlebutton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {titleSearch(); }
-        });
-        Button authorbutton = findViewById(R.id.authorbutton);
-        authorbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {authorSearch();}
-        });
-        Button keywordbutton = findViewById(R.id.keywordbutton);
-        keywordbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { keywordSearch(); }
-        });
-
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.book_info);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -62,34 +42,44 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 //        recyclerView.addItemDecoration(dividerItemDecoration); //TODO decoration not working?
 
 
-        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper.getAllBooks());
+        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 
         ShowBooksOnRecyclerView();
+
+        Button titlebutton = findViewById(R.id.titlebutton);
+        titlebutton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {titleSearch(); }
+        });
+        Button authorbutton = findViewById(R.id.authorbutton);
+        authorbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {authorSearch();}
+        });
+        Button keywordbutton = findViewById(R.id.keywordbutton);
+        keywordbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { keywordSearch(); }
+        });
+
 
     }
 
     @Override
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
+        dataBaseHelper.deleteOne(adapter.getItem(position));
+        ShowBooksOnRecyclerView();
     }
 
     //This updates the RecyclerView
-    private void ShowBooksOnRecyclerView() {
-        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper.getAllBooks());
+    public void ShowBooksOnRecyclerView() {
+        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper);
+        adapter.setClickListener(this);
+
         recyclerView.setAdapter(adapter);
     }
-
-//    public ViewBooksActivity(){
-//
-//        Log.i(TAG, "view point 1");
-//
-//        titleID = findViewById(R.id.view_title);
-//        String title = titleID.getText().toString();
-//        Log.i(TAG, title);
-//
-
-//    }
 
     public void titleSearch(){
     // get the title to search for

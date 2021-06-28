@@ -25,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void LoadData(){
         Log.i(TAG,"making new DBHelper");
+//        TODO delete loader class
 //        Loader loader = new Loader();
 //        Thread loading = new Thread((Runnable) loader, "loader");
 //        loading.start();
         dataBaseHelper = new DataBaseHelper(this);
 
+        //add a test book
         Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
         dataBaseHelper.addOne(test);
         Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
@@ -40,15 +42,10 @@ public class MainActivity extends AppCompatActivity {
     public void ViewBooksButton(){
         //this button will take us to the view library screen
 
-        Log.i(TAG, ", button clicked sending intent to ViewBooks");
-        String test = "This is data";
+        Log.i(TAG, "button clicked sending intent to ViewBooks");
 
         Intent intent = new Intent(this, ViewBooksActivity.class);
         intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
-//        intent.putExtra("DBH", dataBaseHelper);
-
-
-        Log.i(TAG, "This takes you to view books.");
 
         startActivity(intent);
     }

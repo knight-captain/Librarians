@@ -41,7 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String bookTitle = cursor.getString(1);
                 String bookISBN = cursor.getString(2);
                 int bookPages = cursor.getInt(3);
-                boolean bookOwned = cursor.getInt(4) == 1 ? false: true;
+                boolean bookOwned = cursor.getInt(4) == 1 ? true: false;
 
                 Book newBook = new Book(bookID, bookTitle, bookISBN, bookPages, bookOwned);
                 returnList.add(newBook);
