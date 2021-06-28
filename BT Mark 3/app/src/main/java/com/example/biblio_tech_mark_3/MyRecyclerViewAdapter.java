@@ -55,13 +55,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             myTextView = itemView.findViewById(R.id.bookRowName);
             itemView.setOnClickListener(this);
         }
-
+        //Todo this is where the click happens
         @Override
         public void onClick(View view) {
             System.out.println(getItem(getAdapterPosition()).getEntries__title()); //TODO THIS WORKS
+
+
             if (mClickListener != null) {
                 mClickListener.onItemClick(view, getAdapterPosition());
             }
+
+
         }
     }
 

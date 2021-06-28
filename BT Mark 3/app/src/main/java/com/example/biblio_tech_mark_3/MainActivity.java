@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         LoadData();
         Log.i(TAG, "DBhelper " + dataBaseHelper);
 
-// create search button
+// create view books button
         Button search_button = findViewById(R.id.viewBooks);
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,7 +36,6 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
         Log.i(TAG, message + " Received from Main");
 
         dataBaseHelper = new DataBaseHelper(this );
-        Log.i(TAG,"this is where it breaks. DBH: " + dataBaseHelper);
 
         Button titlebutton = findViewById(R.id.titlebutton);
         titlebutton.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +52,6 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
             @Override
             public void onClick(View v) { keywordSearch(); }
         });
-
-
-        //For testing
-//        Book test = new Book(2, "TEST2", "1-234-56890-124-0", 101, false);
-//        dataBaseHelper.addOne(test); //TODO not showing up
 
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.book_info);
