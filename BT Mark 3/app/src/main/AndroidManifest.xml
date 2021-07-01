@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BiblioTechMark3">
-        <activity android:name=".ManageShelvesActivity"></activity>
+        <activity android:name=".AddBooksManually"></activity>
+        <activity android:name=".ManageShelvesActivity" />
         <activity android:name=".AddBooksActivity" />
         <activity android:name=".ViewBooksActivity" />
         <activity android:name=".MainActivity">

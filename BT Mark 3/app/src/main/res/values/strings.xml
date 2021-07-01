@@ -10,11 +10,19 @@
     <string name="authorbutton">Author</string>
     <string name="titlebutton">Title</string>
     <string name="keywordbutton">Keyword</string>
-    <string name="addTitle_label">Add by Title:</string>
+    <string name="addTitle_label">Search by Title to Add:</string>
     <string name="addTitle">Title</string>
     <string name="addTitleButton">Add</string>
-    <string name="addISBN_label">Add by ISBN:</string>
+    <string name="addISBN_label">Search by ISBN to Add:</string>
     <string name="addISBN">ISBN</string>
     <string name="addISBNButton">Add</string>
+    <string name="addManualButton">Add Book Manually</string>
+    <string name="titleManual_label">Title:</string>
+    <string name="titleManual">Title</string>
+    <string name="authorManual_label">Author:</string>
+    <string name="authorManual">Author</string>
+    <string name="genreManual_label">Genre:</string>
+    <string name="genreManual">genre</string>
+    <string name="manualButton">Add Book</string>
 
 </resources>

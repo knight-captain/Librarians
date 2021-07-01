@@ -30,6 +30,11 @@ public class AddBooksActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {addISBN(); }
         });
+        Button addManualButton = findViewById(R.id.addManualButton);
+        addManualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {addManual(); }
+        });
     }
 
     public void addtitle(){
@@ -45,5 +50,11 @@ public class AddBooksActivity extends AppCompatActivity {
         Log.i(TAG, "You clicked the add title button" + ISBN);
 
         //add book to database
+    }
+    public void addManual(){
+        Log.i(TAG, "You clicked the add manual button");
+        //open add manual activity
+        Intent intent =new Intent(this,AddBooksManually.class);
+        startActivity(intent);
     }
 }

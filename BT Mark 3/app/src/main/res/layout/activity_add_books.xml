@@ -19,14 +19,15 @@
 
     <EditText
         android:id="@+id/addTitle"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="215dp"
+        android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/addTitle"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/addTitle_label"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,19 +39,19 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="60dp"
         android:text="@string/addTitle_label"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/addISBN_label"
-        android:layout_width="109dp"
+        android:layout_width="0dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="84dp"
         android:text="@string/addISBN_label"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTitle_label" />
@@ -61,7 +62,7 @@
         android:layout_height="153dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="276dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -70,9 +71,9 @@
         android:id="@+id/textView5"
         android:layout_width="145dp"
         android:layout_height="28dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="592dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="644dp"
         android:text="Add To Shelves"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,22 +81,23 @@
     <RadioGroup
         android:layout_width="93dp"
         android:layout_height="122dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <EditText
         android:id="@+id/addISBN"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="207dp"
+        android:layout_height="36dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="164dp"
         android:ems="10"
         android:hint="@string/addISBN"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/addISBN_label"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,5 +111,16 @@
         android:text="@string/addTitleButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTitle" />
+
+    <Button
+        android:id="@+id/addManualButton"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/addManualButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
