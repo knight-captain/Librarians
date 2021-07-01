@@ -13,7 +13,7 @@ Lesson 11:
 - - API -CAPTAIN
  - - - Get Title/ISBN fields/Buttons to lookup API and return list
  - - - Make (new?) REcyclerview to display list
- - - - Tapping result adds book to library
+ - - - Tapping result opens edit/add page
 - - Manual
  - - - Add view/acitivity with manual entry fields
   - - - Title
