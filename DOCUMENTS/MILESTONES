@@ -11,12 +11,24 @@ Lesson 09:
 Lesson 11:
 - Add books:
 - - API -CAPTAIN
+ - - - Get Title/ISBN fields/Buttons to lookup API and return list
+ - - - Make (new?) REcyclerview to display list
+ - - - Tapping result adds book to library
 - - Manual
-- Add/edit/delete Categories/Shelves 
-- - Search function (choose which categories)
+ - - - Add view/acitivity with manual entry fields
+  - - - Title
+  - - - Author
+  - - - Genre
+  - - - Subjects
+  - - - ISBN
+  - - - Descrption (synopsis - long)
+ - - - button that update book to library (for adding and editing)
+ - - - button that cancels
+- Add/edit/delete Categories/Shelves - NEXT MILESTONE?
+- - Search function (choose which categories) - NEXT MILESTONE?
 - UI 
-- - Add books button & activity (All 4 pages functional)
-- - Shelves/CAtegory button activity
+- - Add books button & activity (All 4 pages functional) -> LISA - DONE!
+- - Shelves/CAtegory button activity -NEXT MILESTONE?
 
 Lesson 13 (Final Project):
 - Add Books via Camera/ISBN barcode
