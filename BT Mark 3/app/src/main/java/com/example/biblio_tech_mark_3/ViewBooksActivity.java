@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
+public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRecyclerViewAdapter.ItemClickListener {
 
     public static final String TAG = "!!!ViewBooksActivity!!!";
 
     RecyclerView recyclerView;
-    MyRecyclerViewAdapter adapter;
+    ViewBooksRecyclerViewAdapter adapter;
 
     DataBaseHelper dataBaseHelper;
 
@@ -42,7 +42,7 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 //        recyclerView.addItemDecoration(dividerItemDecoration); //TODO decoration not working?
 
 
-        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper);
+        adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 
         ShowBooksOnRecyclerView();
@@ -75,7 +75,7 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
     //This updates the RecyclerView
     public void ShowBooksOnRecyclerView() {
-        adapter = new MyRecyclerViewAdapter(this, dataBaseHelper);
+        adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);

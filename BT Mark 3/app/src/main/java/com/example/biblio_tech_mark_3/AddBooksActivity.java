@@ -8,11 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static android.content.ContentValues.TAG;
 
 public class AddBooksActivity extends AppCompatActivity {
     EditText text;
+
+    public static final String TAG = "!!!AddBooksActivity!!!";
+
+    RecyclerView recyclerView;
+    ViewBooksRecyclerViewAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +30,8 @@ public class AddBooksActivity extends AppCompatActivity {
         Button addTitleButton = findViewById(R.id.addTitleButton);
         addTitleButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {addtitle(); }
+            public void onClick(View v) {
+                addTitle(); }
         });
         Button addISBNButton = findViewById(R.id.addISBNButton);
         addISBNButton.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +45,7 @@ public class AddBooksActivity extends AppCompatActivity {
         });
     }
 
-    public void addtitle(){
+    public void addTitle(){
         EditText text = (EditText)findViewById(R.id.addTitle);
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
