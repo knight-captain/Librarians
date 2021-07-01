@@ -47,18 +47,18 @@ public class ViewBooksActivity extends AppCompatActivity implements MyRecyclerVi
 
         ShowBooksOnRecyclerView();
 
-        Button titlebutton = findViewById(R.id.titlebutton);
-        titlebutton.setOnClickListener(new View.OnClickListener() {
+        Button titleButton = findViewById(R.id.titlebutton);
+        titleButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {titleSearch(); }
         });
-        Button authorbutton = findViewById(R.id.authorbutton);
-        authorbutton.setOnClickListener(new View.OnClickListener() {
+        Button authorButton = findViewById(R.id.authorbutton);
+        authorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {authorSearch();}
         });
-        Button keywordbutton = findViewById(R.id.keywordbutton);
-        keywordbutton.setOnClickListener(new View.OnClickListener() {
+        Button keywordButton = findViewById(R.id.keywordbutton);
+        keywordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { keywordSearch(); }
         });

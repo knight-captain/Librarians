@@ -15,9 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.biblio_tech_mark_3.MESSAGE";
 
     DataBaseHelper dataBaseHelper;
-
-
-
+    
     public static void SaveData(Shelf json){
         Log.i(TAG, "This should save the data, but doesn't");
         //TEST COMMENT
@@ -32,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         dataBaseHelper = new DataBaseHelper(this);
 
         //add a test book
-        Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
-        dataBaseHelper.addOne(test);
-        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
+//        Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
+//        dataBaseHelper.addOne(test);
+//        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
 
 //        return dataBaseHelper;
     }

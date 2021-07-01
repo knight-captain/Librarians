@@ -1,5 +1,7 @@
 package com.example.biblio_tech_mark_3;
 
+//TODO Currently not bing used. Will prolly be used once to import the library from Google Sheet/TSV
+
 import android.content.Context;
 import android.util.Log;
 
