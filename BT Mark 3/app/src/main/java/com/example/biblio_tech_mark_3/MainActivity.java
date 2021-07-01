@@ -9,6 +9,9 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "!!!Main activity!!!";
@@ -30,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
         dataBaseHelper = new DataBaseHelper(this);
 
         //add a test book
-//        Book test = new Book(1, "TEST", "1-234-56890-124-3", 100, false);
-//        dataBaseHelper.addOne(test);
-//        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
+        //title, author, List genres, List Subjects, int ISBN, longString Description
+        List<String> genre = new ArrayList<String>();
+        genre.add("Non-Fiction");
+        List<String> subjects = new ArrayList<String>();
+        genre.add("Testing");
+        Book test = new Book(1, "TEST", "unknown", genre, subjects,-1, "This property intentionally left blank");
+        dataBaseHelper.addOne(test);
+        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
 
 //        return dataBaseHelper;
     }
