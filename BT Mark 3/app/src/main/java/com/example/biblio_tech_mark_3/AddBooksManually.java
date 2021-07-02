@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,60 +22,78 @@ public class AddBooksManually extends AppCompatActivity {
     DataBaseHelper dataBaseHelper;
     Book book;
 
+    EditText titleTV;
+    EditText authorTV;
+    EditText genreTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_books_manually);
+        dataBaseHelper = new DataBaseHelper(this);
 
         Intent intent = getIntent();
         String bookInJsonForm = intent.getStringExtra("bookInJsonForm");
         book = JsonHelper.jsonToBook(bookInJsonForm);
-        Log.i(TAG, book.toString());
+
+        Log.i(TAG, book.getTitle() + " " + book.getAuthor() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
 
         //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
+        if(book.getTitle() != null) {
+            titleTV = (EditText)findViewById(R.id.titleManual);
+            titleTV.setText(book.getTitle(), TextView.BufferType.EDITABLE);
+        }
+        if(book.getAuthor() != null) {
+            authorTV = (EditText)findViewById(R.id.authorManual);
+            authorTV.setText(book.getAuthor());
+        }
+        if(book.getGenres() != null) {
+            genreTV = (EditText)findViewById(R.id.genreManual);
+            genreTV.setText(book.getGenres().toString());
+        }
 
-        dataBaseHelper = new DataBaseHelper(this);
 
-        Button manualbutton = findViewById(R.id.manualButon);
-        manualbutton.setOnClickListener(new View.OnClickListener() {
+        Button manualButton = findViewById(R.id.manualButon);
+        manualButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {addBookManually(); }
         });
-
-        //add book to database
     }
 
     public void addBookManually(){
-        EditText ettitle = (EditText)findViewById(R.id.titleManual);
-        String title = ettitle.getText().toString();
+        titleTV = (EditText)findViewById(R.id.titleManual);
+        String title = titleTV.getText().toString();
 
-        EditText etauthor = (EditText)findViewById(R.id.authorManual);
-        String author = etauthor.getText().toString();
+        authorTV = (EditText)findViewById(R.id.authorManual);
+        String author = authorTV.getText().toString();
 
-        EditText etgenre = (EditText)findViewById(R.id.genreManual);
-        String firstGenre = etgenre.getText().toString();
+        genreTV = (EditText)findViewById(R.id.genreManual);
+        String genre = genreTV.getText().toString();
         List<String> genres = new ArrayList<>();
-        genres.add(firstGenre);
 
-        //TODO Subject field, like
+        //TODO Subject field, like Genre's
         List<String> subjects = new ArrayList<>();
+        String subject = "text";
 
-        //TODO ISBN field (with camera lookup!)
+        //TODO ISBN field
+        int ISBN = -1;
 
         //TODO notes field
+        String note = "";
 
         //add a test book
-        //title, author, List genres, List Subjects, int ISBN, longString Description
         book.setTitle(title);
         book.setAuthor(author);
+
         book.setGenres(genres);
+        book.addGenre(genre);
         book.setSubjects(subjects);
-        book.addSubject("test");
-        book.setISBN(-1);
-        book.setNotes("");
+        book.addSubject(subject);
+
+        book.setISBN(ISBN);
+        book.setNotes(note);
 
         dataBaseHelper.addOne(book);
         Log.i(TAG,"added test book: " + book.toString() + " and helper has " + dataBaseHelper);
-
     }
 }

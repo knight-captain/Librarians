@@ -35,7 +35,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
-        //TODO prolly need some Json something here
         test = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             //add a test book
@@ -43,7 +42,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             List<String> genre = new ArrayList<String>();
             genre.add("Non-Fiction" + i);
             List<String> subjects = new ArrayList<String>();
-            genre.add("Testing" + i);
+            subjects.add("Testing" + i);
             Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
             test.add(testBook);
         }
@@ -89,14 +88,17 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
 
-        //add book to database
+        //TODO lookup title as work on API and return list to recyclerView
+        //TODO grab missing info from other isbns
     }
     public void addISBN(){
         EditText text = (EditText)findViewById(R.id.addISBN);
         String ISBN = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + ISBN);
 
-        //add book to database
+        //TODO lookup individual book by isbn and return it to the recyclerView
+        //TODO grab missing info from other isbns
+        //TODO Camera grab ISBN
     }
     public void addManual(){
         Log.i(TAG, "You clicked the add manual button");
