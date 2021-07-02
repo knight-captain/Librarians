@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyclerViewAdapter.ItemClickListener{
     EditText text;
@@ -24,7 +25,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     RecyclerView recyclerView;
     AddBooksRecyclerViewAdapter adapter;
 
-    List<Book> test;
+    List<Book> resultList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +36,20 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
-        test = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            //add a test book
-            //title, author, List genres, List Subjects, int ISBN, longString Description
-            List<String> genre = new ArrayList<String>();
-            genre.add("Non-Fiction" + i);
-            List<String> subjects = new ArrayList<String>();
-            subjects.add("Testing" + i);
-            Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
-            test.add(testBook);
-        }
+        resultList = new ArrayList<>();
+
+        List<String> genre = new ArrayList<String>();
+        genre.add("Non-Fiction" );
+        List<String> subjects = new ArrayList<String>();
+        subjects.add("Testing");
+        Book testBook = new Book(1, "TEST", "unknown" , genre, subjects,-1, "This property intentionally left blank");
+        resultList.add(testBook);
 
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.possibleBooks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new AddBooksRecyclerViewAdapter(this, test);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
         adapter.setClickListener(this);
 
         ShowBooksOnRecyclerView();
@@ -61,12 +59,27 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         addTitleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTitle(); }
+                try {
+                    addTitle();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         });
         Button addISBNButton = findViewById(R.id.addISBNButton);
         addISBNButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {addISBN(); }
+            public void onClick(View v) {
+                try {
+                    addISBN();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         });
         Button addManualButton = findViewById(R.id.addManualButton);
         addManualButton.setOnClickListener(new View.OnClickListener() {
@@ -77,26 +90,35 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
     //This updates the RecyclerView
     public void ShowBooksOnRecyclerView() {
-        adapter = new AddBooksRecyclerViewAdapter(this, test);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
         adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);
     }
 
-    public void addTitle(){
+    public void addTitle() throws ExecutionException, InterruptedException {
         EditText text = (EditText)findViewById(R.id.addTitle);
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
 
         //TODO lookup title as work on API and return list to recyclerView
+
         //TODO grab missing info from other isbns
     }
-    public void addISBN(){
+    public void addISBN() throws ExecutionException, InterruptedException {
         EditText text = (EditText)findViewById(R.id.addISBN);
         String ISBN = text.getText().toString();
-        Log.i(TAG, "You clicked the add title button" + ISBN);
+        Log.i(TAG, "You clicked the add ISBN button" + ISBN);
 
         //TODO lookup individual book by isbn and return it to the recyclerView
+        APIHelper apiH = new APIHelper(null, ISBN);
+        FutureTask apiTask = new FutureTask(apiH);
+        Thread lookupThread = new Thread(apiTask);
+        lookupThread.start();
+
+        resultList = (List<Book>) apiTask.get();
+
+        ShowBooksOnRecyclerView();
         //TODO grab missing info from other isbns
         //TODO Camera grab ISBN
     }

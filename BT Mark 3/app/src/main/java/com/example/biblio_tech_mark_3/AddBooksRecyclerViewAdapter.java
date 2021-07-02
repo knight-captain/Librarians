@@ -51,7 +51,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
     @SuppressLint("LongLogTag")
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
-        Log.i(TAG,"@ setClickListener = " + mClickListener);
+        Log.i(TAG,"set" + mClickListener);
     }
 
     // parent activity will implement this method to respond to click events
@@ -75,7 +75,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
                 mClickListener.onItemClick(view, getAdapterPosition());
                 // this sends the click to ViewBooksActivity.onItemClick()
             } else {
-                Log.i(TAG, "mClickListener = " + mClickListener);
+                Log.i(TAG, "onClick was null " + mClickListener);
             }
         }
     }

@@ -1,11 +1,14 @@
 package com.example.biblio_tech_mark_3;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
 
     private int id;
+    @SerializedName("title")
     private String title; //Title String -> related to Work
     private String author; //The Author ->lookup from Author(s) key (usually one)
     private List<String> genres; //More than one?
