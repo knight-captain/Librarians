@@ -1,5 +1,6 @@
 package com.example.biblio_tech_mark_3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
@@ -52,17 +53,23 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
 
     public void setSubjects(List<String> subjects) { this.subjects = subjects; }
 
+    public void addSubject(String subject){ this.subjects.add(subject); }
+
     public String getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) { this.notes += notes; }
+    public void setNotes(String notes) { this.notes = notes; }
 
     public int getISBN() {
         return ISBN;
     }
 
     public void setISBN(int ISBN) { this.ISBN = ISBN; }
+
+    public String convertToJson(){
+        return "yo";
+    }
 
     public Book(int id, String title, String author, List<String> genres, List<String> subjects, int ISBN, String notes) {
         this.id = id;

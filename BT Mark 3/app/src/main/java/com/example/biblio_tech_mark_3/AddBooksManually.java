@@ -16,7 +16,10 @@ import static android.content.ContentValues.TAG;
 
 public class AddBooksManually extends AppCompatActivity {
 
+    public static final String TAG = "!!!AddBooksManually!!!";
+
     DataBaseHelper dataBaseHelper;
+    Book book;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +27,13 @@ public class AddBooksManually extends AppCompatActivity {
         setContentView(R.layout.activity_add_books_manually);
 
         Intent intent = getIntent();
+        String bookInJsonForm = intent.getStringExtra("bookInJsonForm");
+        book = JsonHelper.jsonToBook(bookInJsonForm);
+        Log.i(TAG, book.toString());
+
+        //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
 
         dataBaseHelper = new DataBaseHelper(this);
-
-
 
         Button manualbutton = findViewById(R.id.manualButon);
         manualbutton.setOnClickListener(new View.OnClickListener() {
@@ -47,18 +53,28 @@ public class AddBooksManually extends AppCompatActivity {
 
         EditText etgenre = (EditText)findViewById(R.id.genreManual);
         String firstGenre = etgenre.getText().toString();
+        List<String> genres = new ArrayList<>();
+        genres.add(firstGenre);
+
+        //TODO Subject field, like
+        List<String> subjects = new ArrayList<>();
+
+        //TODO ISBN field (with camera lookup!)
+
+        //TODO notes field
 
         //add a test book
         //title, author, List genres, List Subjects, int ISBN, longString Description
-        List<String> genre = new ArrayList<String>();
-        genre.add(firstGenre);
-        List<String> subjects = new ArrayList<String>();
-        genre.add("Testing");
-        Book test = new Book(1, title, author, genre, subjects,-1, "This book was made by the AddBooks button");
-        dataBaseHelper.addOne(test);
-        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setGenres(genres);
+        book.setSubjects(subjects);
+        book.addSubject("test");
+        book.setISBN(-1);
+        book.setNotes("");
 
-        Log.i(TAG, "You added this book" + title + " " + author + " " + genre);
+        dataBaseHelper.addOne(book);
+        Log.i(TAG,"added test book: " + book.toString() + " and helper has " + dataBaseHelper);
 
     }
 }

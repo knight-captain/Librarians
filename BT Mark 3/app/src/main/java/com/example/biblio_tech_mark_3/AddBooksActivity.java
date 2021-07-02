@@ -102,14 +102,24 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, "You clicked the add manual button");
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
+
+        Book blankBook = new Book(-1,"Unknown",null,null,null,-1,"This field intentionally left blank");
+
+        String bookInJsonForm = JsonHelper.bookToJson(blankBook);
+        intent.putExtra("bookInJsonForm",bookInJsonForm);
+
         startActivity(intent);
     }
 
     @Override
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
-        //todo send book info to addManual page
+
         Intent intent = new Intent(this,AddBooksManually.class);
+        Book clickedBook = adapter.getItem(position);
+        String bookInJsonForm = JsonHelper.bookToJson(clickedBook);
+        intent.putExtra("bookInJsonForm",bookInJsonForm);
+
         startActivity(intent);
     }
 }
