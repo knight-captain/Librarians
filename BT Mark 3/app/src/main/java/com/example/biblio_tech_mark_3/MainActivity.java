@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         //this will be the method linked to the "add book" button
         Log.i(TAG, "This takes you to the add book screen");
         Intent intent =new Intent(this,AddBooksActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, String.valueOf(this));
         startActivity(intent);
 
     }

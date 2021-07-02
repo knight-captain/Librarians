@@ -1,6 +1,5 @@
 package com.example.biblio_tech_mark_3;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,8 +39,6 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
 //                layoutManager.getOrientation());//TODO decoration not working?
 //        recyclerView.addItemDecoration(dividerItemDecoration); //TODO decoration not working?
-
-
         adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 
