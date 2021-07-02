@@ -109,5 +109,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
         //todo send book info to addManual page
+        Intent intent = new Intent(this,AddBooksManually.class);
+        startActivity(intent);
     }
 }

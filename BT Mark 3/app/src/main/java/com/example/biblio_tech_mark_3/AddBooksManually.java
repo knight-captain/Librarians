@@ -9,9 +9,14 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 public class AddBooksManually extends AppCompatActivity {
+
+    DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,10 @@ public class AddBooksManually extends AppCompatActivity {
         setContentView(R.layout.activity_add_books_manually);
 
         Intent intent = getIntent();
+
+        dataBaseHelper = new DataBaseHelper(this);
+
+
 
         Button manualbutton = findViewById(R.id.manualButon);
         manualbutton.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +46,17 @@ public class AddBooksManually extends AppCompatActivity {
         String author = etauthor.getText().toString();
 
         EditText etgenre = (EditText)findViewById(R.id.genreManual);
-        String genre = etgenre.getText().toString();
+        String firstGenre = etgenre.getText().toString();
+
+        //add a test book
+        //title, author, List genres, List Subjects, int ISBN, longString Description
+        List<String> genre = new ArrayList<String>();
+        genre.add(firstGenre);
+        List<String> subjects = new ArrayList<String>();
+        genre.add("Testing");
+        Book test = new Book(1, title, author, genre, subjects,-1, "This book was made by the AddBooks button");
+        dataBaseHelper.addOne(test);
+        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
 
         Log.i(TAG, "You added this book" + title + " " + author + " " + genre);
 

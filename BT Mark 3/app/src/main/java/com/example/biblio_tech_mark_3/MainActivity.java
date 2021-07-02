@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     
     public static void SaveData(Shelf json){
         Log.i(TAG, "This should save the data, but doesn't");
-        //TEST COMMENT
+        //TODO delete section
     }
 
     public void LoadData(){
@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
 //        loading.start();
         dataBaseHelper = new DataBaseHelper(this);
 
-        //add a test book
-        //title, author, List genres, List Subjects, int ISBN, longString Description
-        List<String> genre = new ArrayList<String>();
-        genre.add("Non-Fiction");
-        List<String> subjects = new ArrayList<String>();
-        genre.add("Testing");
-        Book test = new Book(1, "TEST", "unknown", genre, subjects,-1, "This property intentionally left blank");
-        dataBaseHelper.addOne(test);
-        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
+//        //add a test book
+//        //title, author, List genres, List Subjects, int ISBN, longString Description
+//        List<String> genre = new ArrayList<String>();
+//        genre.add("Non-Fiction");
+//        List<String> subjects = new ArrayList<String>();
+//        genre.add("Testing");
+//        Book test = new Book(1, "TEST", "unknown", genre, subjects,-1, "This property intentionally left blank");
+//        dataBaseHelper.addOne(test);
+//        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
 
 //        return dataBaseHelper;
     }
