@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBooksManually">
+
+    <EditText
+        android:id="@+id/titleManual"
+        android:layout_width="215dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/titleManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/titleManual_label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/authorManual"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/authorManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/authorManual_label"
+        app:layout_constraintTop_toBottomOf="@+id/titleManual" />
+
+    <EditText
+        android:id="@+id/genreManual"
+        android:layout_width="215dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/genreManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/genreManual_label"
+        app:layout_constraintTop_toBottomOf="@+id/authorManual" />
+
+    <TextView
+        android:id="@+id/titleManual_label"
+        android:layout_width="107dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/titleManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/authorManual_label"
+        android:layout_width="107dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/authorManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleManual_label" />
+
+    <TextView
+        android:id="@+id/genreManual_label"
+        android:layout_width="107dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/genreManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorManual_label" />
+
+    <Button
+        android:id="@+id/manualButon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="456dp"
+        android:text="@string/manualButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cancelManualButton"
+        android:layout_width="109dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/cancelManualButton"
+        app:layout_constraintStart_toEndOf="@+id/manualButon"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionManual" />
+
+    <TextView
+        android:id="@+id/subjectsManual"
+        android:layout_width="104dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/subjectsManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genreManual_label" />
+
+    <TextView
+        android:id="@+id/isbnManual_label"
+        android:layout_width="104dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/isbnManual"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectsManual" />
+
+    <TextView
+        android:id="@+id/descriptionMaanual_label"
+        android:layout_width="105dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/descriptionManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isbnManual_label" />
+
+    <EditText
+        android:id="@+id/isbnManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/isbnManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/isbnManual_label"
+        app:layout_constraintTop_toBottomOf="@+id/subjectManual" />
+
+    <EditText
+        android:id="@+id/descriptionManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/descriptionManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/descriptionMaanual_label"
+        app:layout_constraintTop_toBottomOf="@+id/isbnManual" />
+
+    <EditText
+        android:id="@+id/subjectManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/subjectsManual"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/subjectsManual"
+        app:layout_constraintTop_toBottomOf="@+id/genreManual" />
+</androidx.constraintlayout.widget.ConstraintLayout>
