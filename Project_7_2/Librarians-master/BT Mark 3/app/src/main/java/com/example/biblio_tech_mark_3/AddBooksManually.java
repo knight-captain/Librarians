@@ -72,8 +72,6 @@ public class AddBooksManually extends AppCompatActivity {
         }
 
 
-
-
         Button manualButton = findViewById(R.id.manualButon);
         manualButton.setOnClickListener(new View.OnClickListener() {
             @Override
