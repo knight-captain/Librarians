@@ -1,0 +1,44 @@
+com/example/biblio_tech_mark_3/JsonHelper.java
+ com.example.biblio_tech_mark_3.JsonHelper
+com/example/biblio_tech_mark_3/ManageShelvesActivity.java
+ com.example.biblio_tech_mark_3.ManageShelvesActivity
+com/example/biblio_tech_mark_3/LibraryLoadFromJson.java
+ com.example.biblio_tech_mark_3.LibraryLoadFromJson
+com/example/biblio_tech_mark_3/Book.java
+ com.example.biblio_tech_mark_3.Book
+com/example/biblio_tech_mark_3/APIHelper.java
+ com.example.biblio_tech_mark_3.APIHelper
+com/example/biblio_tech_mark_3/DataBaseHelper.java
+ com.example.biblio_tech_mark_3.DataBaseHelper
+com/example/biblio_tech_mark_3/AddBooksManually.java
+ com.example.biblio_tech_mark_3.AddBooksManually
+ com.example.biblio_tech_mark_3.AddBooksManually$1
+com/example/biblio_tech_mark_3/AddBooksRecyclerViewAdapter.java
+ com.example.biblio_tech_mark_3.AddBooksRecyclerViewAdapter
+ com.example.biblio_tech_mark_3.AddBooksRecyclerViewAdapter$ItemClickListener
+ com.example.biblio_tech_mark_3.AddBooksRecyclerViewAdapter$ViewHolder
+com/example/biblio_tech_mark_3/Loader.java
+ com.example.biblio_tech_mark_3.Loader
+com/example/biblio_tech_mark_3/AddBooksActivity.java
+ com.example.biblio_tech_mark_3.AddBooksActivity
+ com.example.biblio_tech_mark_3.AddBooksActivity$1
+ com.example.biblio_tech_mark_3.AddBooksActivity$2
+ com.example.biblio_tech_mark_3.AddBooksActivity$3
+com/example/biblio_tech_mark_3/ViewBooksRecyclerViewAdapter.java
+ com.example.biblio_tech_mark_3.ViewBooksRecyclerViewAdapter
+ com.example.biblio_tech_mark_3.ViewBooksRecyclerViewAdapter$ItemClickListener
+ com.example.biblio_tech_mark_3.ViewBooksRecyclerViewAdapter$ViewHolder
+com/example/biblio_tech_mark_3/Shelf.java
+ com.example.biblio_tech_mark_3.Shelf
+com/example/biblio_tech_mark_3/MainActivity.java
+ com.example.biblio_tech_mark_3.MainActivity
+ com.example.biblio_tech_mark_3.MainActivity$1
+ com.example.biblio_tech_mark_3.MainActivity$2
+ com.example.biblio_tech_mark_3.MainActivity$3
+com/example/biblio_tech_mark_3/ViewBooksActivity.java
+ com.example.biblio_tech_mark_3.ViewBooksActivity
+ com.example.biblio_tech_mark_3.ViewBooksActivity$1
+ com.example.biblio_tech_mark_3.ViewBooksActivity$2
+ com.example.biblio_tech_mark_3.ViewBooksActivity$3
+com/example/biblio_tech_mark_3/BuildConfig.java
+ com.example.biblio_tech_mark_3.BuildConfig
