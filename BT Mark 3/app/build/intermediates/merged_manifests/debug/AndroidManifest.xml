@@ -8,8 +8,6 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="30" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -19,8 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.BiblioTechMark3"
-        android:usesCleartextTraffic="true" >
+        android:theme="@style/Theme.BiblioTechMark3" >
         <activity android:name="com.example.biblio_tech_mark_3.AddBooksManually" />
         <activity android:name="com.example.biblio_tech_mark_3.ManageShelvesActivity" />
         <activity android:name="com.example.biblio_tech_mark_3.AddBooksActivity" />

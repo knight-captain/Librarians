@@ -1794,6 +1794,7 @@ id bottom
 id bounce
 id buttonPanel
 id cache_measures
+id cancelAddManualButton
 id cancel_button
 id center
 id center_horizontal
@@ -1919,6 +1920,7 @@ id line3
 id linear
 id listMode
 id list_item
+id manageFinishButton
 id manage_library
 id manualButon
 id masked
@@ -2132,6 +2134,7 @@ id unlabeled
 id up
 id useLogo
 id viewBooks
+id viewFinishButton
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -2337,11 +2340,15 @@ string authorManual_label
 string authorbutton
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string cancelAddManualButton
+string cancelManualButton
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string descriptionManual
+string descriptionManual_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -2352,8 +2359,11 @@ string genreManual
 string genreManual_label
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string isbnManual
+string isbnManual_label
 string item_view_role_description
 string keywordbutton
+string manageFinishButton
 string manage_library_button
 string manualButton
 string material_clock_display_divider
@@ -2415,10 +2425,13 @@ string picofbooks
 string search_button
 string search_menu_title
 string status_bar_notification_info_overflow
+string subjectsManual
+string subjectsManual_label
 string title
 string titleManual
 string titleManual_label
 string titlebutton
+string viewFinishButton
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
