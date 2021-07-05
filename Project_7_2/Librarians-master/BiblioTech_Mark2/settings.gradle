@@ -1,0 +1,2 @@
+rootProject.name = "Biblio-Tech_Mark2"
+include ':app'
