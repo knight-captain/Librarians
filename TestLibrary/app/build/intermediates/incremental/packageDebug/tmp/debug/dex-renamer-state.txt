@@ -1,0 +1,4 @@
+#Wed Jun 16 13:06:30 EDT 2021
+base.0=C\:\\Users\\McVey\\OneDrive\\Documents\\Important-Pallatia\\School\\Current\\CS 241\\GIt\\Librarians\\TestLibrary\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

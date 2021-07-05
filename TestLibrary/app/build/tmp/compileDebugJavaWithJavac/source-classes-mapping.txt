@@ -1,0 +1,15 @@
+com/example/testlibrary/BookModel.java
+ com.example.testlibrary.BookModel
+com/example/testlibrary/MyRecyclerViewAdapter.java
+ com.example.testlibrary.MyRecyclerViewAdapter
+ com.example.testlibrary.MyRecyclerViewAdapter$ItemClickListener
+ com.example.testlibrary.MyRecyclerViewAdapter$ViewHolder
+com/example/testlibrary/MainActivity.java
+ com.example.testlibrary.MainActivity
+ com.example.testlibrary.MainActivity$1
+com/example/testlibrary/BuildConfig.java
+ com.example.testlibrary.BuildConfig
+com/example/testlibrary/DataBaseHelper.java
+ com.example.testlibrary.DataBaseHelper
+com/example/testlibrary/Book.java
+ com.example.testlibrary.Book
