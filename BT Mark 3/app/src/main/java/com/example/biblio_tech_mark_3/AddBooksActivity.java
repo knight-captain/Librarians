@@ -145,5 +145,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         intent.putExtra("bookInJsonForm",bookInJsonForm);
 
         startActivity(intent);
+
     }
 }
