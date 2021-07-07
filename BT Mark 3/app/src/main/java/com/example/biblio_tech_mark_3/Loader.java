@@ -1,5 +1,8 @@
 package com.example.biblio_tech_mark_3;
 
+//TODO Currently not bing used (DELETE?)
+
+
 import android.app.Activity;
 import android.util.Log;
 
@@ -14,6 +17,8 @@ public class Loader extends AppCompatActivity implements Runnable{
 
     @Override
     public void run() {
+    //DataBaseHelper kinda took over this class's job. Will prolly delete it later
+
         Shelf library = new Shelf("test");
 
         // Gets temp library from LibraryLoadFromJson.

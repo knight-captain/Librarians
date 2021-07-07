@@ -1,5 +1,7 @@
 package com.example.biblio_tech_mark_3;
 
+//TODO Currently not bing used. Will prolly be used once to import the library from Google Sheet/TSV
+
 import android.content.Context;
 import android.util.Log;
 
@@ -10,6 +12,7 @@ import java.io.*;
 public class LibraryLoadFromJson {
     //    private static String librarySaveData = "ShortLibrary";// fix to Android
     //using a string instead
+
     public static String testJson =
             "{\"name\":\"Shelf\",\"books\":[" +
                     "{\"Series\":\"The Chronicles of Narnia\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"B\\u0026N Collectable\",\"Author\":\"C.S. Lewis\",\"TITLE\":\"The Chronicles of Narnia\",\"# \":\"\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"MG\"}," +
@@ -30,6 +33,8 @@ public class LibraryLoadFromJson {
         json = gson.fromJson(testJson, Shelf.class);
 
         //TODO Below needs to be fixed to android
+        //SQLite: https://developer.android.com/training/data-storage/sqlite
+
         Log.i(TAG,"this should save this file onto the device...");
         MainActivity.SaveData(json);
 

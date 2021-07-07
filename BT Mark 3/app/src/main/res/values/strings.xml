@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Biblio-Tech-Mark-3</string>
+    <string name="title">Personal Library</string>
+    <string name="picofbooks">Stack of Books</string>
+    <string name="search_button">Search Library</string>
+    <string name="add_book_button">Add a Book to Library</string>
+    <string name="manage_library_button">Manage Library</string>
+    <string name="findLabel">Find: </string>
+    <string name="find_input">search</string>
+    <string name="authorbutton">Author</string>
+    <string name="titlebutton">Title</string>
+    <string name="keywordbutton">Keyword</string>
+    <string name="addTitle_label">Search by Title to Add:</string>
+    <string name="addTitle">Title</string>
+    <string name="addTitleButton">Add</string>
+    <string name="addISBN_label">Search by ISBN to Add:</string>
+    <string name="addISBN">ISBN</string>
+    <string name="addISBNButton">Add</string>
+    <string name="addManualButton">Add Book Manually</string>
+    <string name="titleManual_label">Title:</string>
+    <string name="titleManual">Title</string>
+    <string name="authorManual_label">Author:</string>
+    <string name="authorManual">Author</string>
+    <string name="genreManual_label">Genre:</string>
+    <string name="genreManual">genre</string>
+    <string name="manualButton">Add Book</string>
+
+
 </resources>
