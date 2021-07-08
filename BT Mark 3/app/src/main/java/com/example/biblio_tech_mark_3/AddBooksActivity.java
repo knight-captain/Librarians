@@ -48,7 +48,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             genre.add("Non-Fiction" + i);
             List<String> subjects = new ArrayList<String>();
             subjects.add("Testing" + i);
-            Book testBook = new Book(1, "TEST" + i, new Author("Robertson"), genre, subjects,-1 - i, "This property intentionally left blank"  + i);
+            Book testBook = new Book(1, "TEST" + i, new Author("Robertson"), genre, subjects,1000000000000l + i, "This property intentionally left blank"  + i);
             resultList.add(testBook);
         }
 
@@ -164,7 +164,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,null,new Author(null),null,null,9780671504397,"This field intentionally left blank");
+        Book blankBook = new Book(-1,null,new Author(null),null,null, 9780671504397l,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);

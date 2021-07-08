@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,7 +35,7 @@ public class AddBooksManually extends AppCompatActivity {
         String bookInJsonForm = intent.getStringExtra("bookInJsonForm");
         book = JsonHelper.jsonToBook(bookInJsonForm);
 
-        Log.i(TAG, book.getTitle() + " " + book.getAuthor() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
+        Log.i(TAG, "Got: " + book.getTitle() + " " + book.getAuthor() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
 
         //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
         if(book.getTitle() != null) {
@@ -61,7 +60,7 @@ public class AddBooksManually extends AppCompatActivity {
         // Error about int can't be a null -> needed to be an int = -1
         if(book.getISBN() != -1) {
             isbnTV = (EditText)findViewById(R.id.isbnManual);
-            isbnTV.setText(Integer.toString( book.getISBN() ));
+            isbnTV.setText(Long.toString( book.getISBN() ));
         }
 
         if(book.getNotes() != null) {
@@ -105,7 +104,7 @@ public class AddBooksManually extends AppCompatActivity {
         List<String> subjects = new ArrayList<>();
 
         isbnTV = (EditText)findViewById(R.id.isbnManual);
-        int ISBN = Integer.parseInt(isbnTV.getText().toString() ); //TODO ISBN's are too big for Int!
+        long ISBN = Long.parseLong( isbnTV.getText().toString() ); //TODO ISBN's are too big for Int!
 
         notesTV = (EditText)findViewById(R.id.descriptionManual);
         String note = notesTV.getText().toString();
