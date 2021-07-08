@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -59,14 +58,10 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, test);
-//        adapter.setClickListener(this);
-
         adapter = new AddBooksRecyclerViewAdapter(this, resultList);
         adapter.setClickListener(this);
 
-
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
 
         Button addTitleButton = findViewById(R.id.addTitleButton);
         addTitleButton.setOnClickListener(new View.OnClickListener() {
@@ -108,19 +103,13 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         });
     }
     //This updates the RecyclerView
-    public void ShowBooksOnRecyclerView() {
+    public void showBooksOnRecyclerView() {
 
         adapter = new AddBooksRecyclerViewAdapter(this, resultList);
         adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);
     }
-//    public void addTitle(){
-////        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-//        adapter.setClickListener(this);
-//
-//        recyclerView.setAdapter(adapter);
-//    }
 
     public void addTitle() throws ExecutionException, InterruptedException {
 
@@ -166,7 +155,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         resultList = (List<Book>) apiTask.get();
 
 
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
         //TODO grab missing info from other isbns
         //TODO Camera grab ISBN
     }
@@ -195,5 +184,4 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         startActivity(intent);
     }
-
 }

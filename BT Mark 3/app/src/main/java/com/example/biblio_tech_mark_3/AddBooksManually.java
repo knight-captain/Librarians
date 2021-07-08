@@ -11,16 +11,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class AddBooksManually extends AppCompatActivity {
 
 
     public static final String TAG = "AddBooksManually: ";
-
 
     DataBaseHelper dataBaseHelper;
     Book book;
@@ -32,7 +28,6 @@ public class AddBooksManually extends AppCompatActivity {
     EditText isbnTV;
     EditText descriptionTV;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_books_manually);
@@ -77,13 +72,11 @@ public class AddBooksManually extends AppCompatActivity {
 
         Button manualbutton = findViewById(R.id.manualButton);
         manualbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {addBookManually(); }
         });
 
         Button cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 finish();
             }
@@ -91,7 +84,6 @@ public class AddBooksManually extends AppCompatActivity {
 
         Button manualButton = findViewById(R.id.manualButton);
         manualButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {addBookManually(); }
         });
 
