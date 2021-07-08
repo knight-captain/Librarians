@@ -10,9 +10,9 @@
         android:id="@+id/titleManual"
         android:layout_width="215dp"
         android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:hint="@string/titleManual"
         android:inputType="textPersonName"
@@ -49,9 +49,9 @@
         android:id="@+id/titleManual_label"
         android:layout_width="107dp"
         android:layout_height="31dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="68dp"
         android:text="@string/titleManual_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,9 +82,9 @@
         android:id="@+id/manualButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="504dp"
         android:text="@string/manualButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -93,10 +93,82 @@
         android:id="@+id/cancelButton"
         android:layout_width="111dp"
         android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:text="@string/cancelButton"
         app:layout_constraintStart_toEndOf="@+id/manualButton"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionManual" />
+
+    <TextView
+        android:id="@+id/subjectsManual_label"
+        android:layout_width="107dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/subjectsManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genreManual_label" />
+
+    <TextView
+        android:id="@+id/isbnManual_label"
+        android:layout_width="107dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/isbnManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectsManual_label" />
+
+    <TextView
+        android:id="@+id/descriptionManual_label"
+        android:layout_width="106dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/descriptionManual_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isbnManual_label" />
+
+    <EditText
+        android:id="@+id/subjectsManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/subjectsManual"
+        app:layout_constraintStart_toEndOf="@+id/subjectsManual_label"
         app:layout_constraintTop_toBottomOf="@+id/genreManual" />
+
+    <EditText
+        android:id="@+id/isbnManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/isbnManual"
+        app:layout_constraintStart_toEndOf="@+id/isbnManual_label"
+        app:layout_constraintTop_toBottomOf="@+id/subjectsManual" />
+
+    <EditText
+        android:id="@+id/descriptionManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/descriptionManual_label"
+        app:layout_constraintStart_toEndOf="@+id/descriptionManual_label"
+        app:layout_constraintTop_toBottomOf="@+id/isbnManual" />
 </androidx.constraintlayout.widget.ConstraintLayout>

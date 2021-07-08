@@ -10,21 +10,29 @@
     <string name="authorbutton">Author</string>
     <string name="titlebutton">Title</string>
     <string name="keywordbutton">Keyword</string>
-    <string name="addTitle_label">Search by Title to Add:</string>
+    <string name="addTitle_label">Search by Title:</string>
     <string name="addTitle">Title</string>
     <string name="addTitleButton">Add</string>
-    <string name="addISBN_label">Search by ISBN to Add:</string>
+    <string name="addISBN_label">Search by ISBN:</string>
     <string name="addISBN">ISBN</string>
     <string name="addISBNButton">Add</string>
     <string name="addManualButton">Add Book Manually</string>
+    <string name="manageFinishButton">Cancel</string>
     <string name="titleManual_label">Title:</string>
     <string name="titleManual">Title</string>
     <string name="authorManual_label">Author:</string>
     <string name="authorManual">Author</string>
     <string name="genreManual_label">Genre:</string>
     <string name="genreManual">genre</string>
+    <string name="subjectsManual_label">Subjects:</string>
+    <string name="subjectsManual">subject</string>
+    <string name="isbnManual_label">ISBN:</string>
+    <string name="isbnManual">isbn</string>
+    <string name="descriptionManual_label">Description:</string>
+    <string name="descriptionManual">description</string>
     <string name="manualButton">Add Book</string>
     <string name="cancelButton">Cancel</string>
     <string name="doneButton">Done</string>
+
 
 </resources>
