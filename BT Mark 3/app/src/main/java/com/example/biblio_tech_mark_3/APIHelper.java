@@ -13,7 +13,7 @@ import java.util.concurrent.Callable;
 
 public class APIHelper implements Callable<List<Book>> {
 
-    public static final String TAG = "!!!APIHelper!!!";
+    public static final String TAG = "APIHelper: ";
 
     private String title;
     private String ISBN; //can lookup 10 or 13

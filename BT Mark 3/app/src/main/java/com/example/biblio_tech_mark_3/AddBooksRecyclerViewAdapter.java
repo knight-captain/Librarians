@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRecyclerViewAdapter.ViewHolder> {
 
-    public static final String TAG = "!!!AddBooksAdapter!!!";
+    public static final String TAG = "AddBooksRVAdapter: ";
 
     private List<Book> mData;
     private LayoutInflater mInflater;

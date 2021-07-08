@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    public static final String TAG = "!!!DataBaseHelper!!!";
+    public static final String TAG = "DataBaseHelper: ";
 
     //title, author, List genres, List Subjects, int ISBN, longString Description
     public static final String BOOK_TABLE = "BOOK_TABLE";

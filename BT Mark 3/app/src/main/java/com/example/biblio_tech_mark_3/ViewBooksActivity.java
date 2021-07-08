@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRecyclerViewAdapter.ItemClickListener {
 
-    public static final String TAG = "!!!ViewBooksActivity!!!";
+    public static final String TAG = "ViewBooksActivity: ";
 
     RecyclerView recyclerView;
     ViewBooksRecyclerViewAdapter adapter;
@@ -36,13 +36,11 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
         recyclerView = findViewById(R.id.book_info);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-//                layoutManager.getOrientation());//TODO decoration not working?
-//        recyclerView.addItemDecoration(dividerItemDecoration); //TODO decoration not working?
+        //below is in showBooksOnRecyclerView; does it need to be here?
         adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
 
         Button titleButton = findViewById(R.id.titlebutton);
         titleButton.setOnClickListener(new View.OnClickListener() {
@@ -59,19 +57,17 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
             @Override
             public void onClick(View v) { keywordSearch(); }
         });
-
-
     }
 
     @Override
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
         dataBaseHelper.deleteOne(adapter.getItem(position));
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
     }
 
     //This updates the RecyclerView
-    public void ShowBooksOnRecyclerView() {
+    public void showBooksOnRecyclerView() {
         adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
 

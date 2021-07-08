@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ManageShelvesActivity extends AppCompatActivity {
 
+    public static final String TAG = "ManageShelvesActivity: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

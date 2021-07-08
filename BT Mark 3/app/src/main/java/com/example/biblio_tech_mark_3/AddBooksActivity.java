@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -23,11 +22,9 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
     EditText text;
 
-    public static final String TAG = "!!!AddBooksActivity!!!";
+    public static final String TAG = "AddBooksActivity: ";
 
     RecyclerView recyclerView;
-//    ViewBooksRecyclerViewAdapter adapter;
-    List<Book> test;
     AddBooksRecyclerViewAdapter adapter;
 
     List<Book> resultList;
@@ -37,12 +34,13 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_books);
 
+        // don't really need this intent?
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
+        resultList = new ArrayList<>();
 
-        test = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             //add a test book
             //title, author, List genres, List Subjects, int ISBN, longString Description
@@ -51,17 +49,8 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             List<String> subjects = new ArrayList<String>();
             subjects.add("Testing" + i);
             Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
-            test.add(testBook);
+            resultList.add(testBook);
         }
-
-        resultList = new ArrayList<>();
-
-        List<String> genre = new ArrayList<String>();
-        genre.add("Non-Fiction" );
-        List<String> subjects = new ArrayList<String>();
-        subjects.add("Testing");
-        Book testBook = new Book(1, "TEST", "unknown" , genre, subjects,-1, "This property intentionally left blank");
-        resultList.add(testBook);
 
 
         //The RecyclerView and its Adapter
@@ -69,14 +58,10 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, test);
-//        adapter.setClickListener(this);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
+        adapter.setClickListener(this);
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-//        adapter.setClickListener(this);
-
-
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
 
         Button addTitleButton = findViewById(R.id.addTitleButton);
         addTitleButton.setOnClickListener(new View.OnClickListener() {
@@ -118,26 +103,20 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         });
     }
     //This updates the RecyclerView
-    public void ShowBooksOnRecyclerView() {
+    public void showBooksOnRecyclerView() {
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, test);
-//        adapter.setClickListener(this);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
+        adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);
     }
-//    public void addTitle(){
-////        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-//        adapter.setClickListener(this);
-//
-//        recyclerView.setAdapter(adapter);
-//    }
 
     public void addTitle() throws ExecutionException, InterruptedException {
 
         EditText text = (EditText)findViewById(R.id.addTitle);
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
-        //get info from API
+        //todo get info from API
         String author = "Author";
         List<String> genre = Collections.singletonList("Genre");
         List<String> subjects = Collections.singletonList("subjects");
@@ -176,7 +155,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         resultList = (List<Book>) apiTask.get();
 
 
-        ShowBooksOnRecyclerView();
+        showBooksOnRecyclerView();
         //TODO grab missing info from other isbns
         //TODO Camera grab ISBN
     }
@@ -205,5 +184,4 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         startActivity(intent);
     }
-
 }
