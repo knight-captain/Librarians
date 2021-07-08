@@ -26,8 +26,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     public static final String TAG = "!!!AddBooksActivity!!!";
 
     RecyclerView recyclerView;
-//    ViewBooksRecyclerViewAdapter adapter;
-    List<Book> test;
     AddBooksRecyclerViewAdapter adapter;
 
     List<Book> resultList;
@@ -41,8 +39,8 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
 
+        resultList = new ArrayList<>();
 
-        test = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             //add a test book
             //title, author, List genres, List Subjects, int ISBN, longString Description
@@ -51,7 +49,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             List<String> subjects = new ArrayList<String>();
             subjects.add("Testing" + i);
             Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
-            test.add(testBook);
+            resultList.add(testBook);
         }
 
         resultList = new ArrayList<>();
@@ -72,8 +70,8 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 //        adapter = new AddBooksRecyclerViewAdapter(this, test);
 //        adapter.setClickListener(this);
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-//        adapter.setClickListener(this);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
+        adapter.setClickListener(this);
 
 
         ShowBooksOnRecyclerView();
@@ -120,8 +118,8 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     //This updates the RecyclerView
     public void ShowBooksOnRecyclerView() {
 
-//        adapter = new AddBooksRecyclerViewAdapter(this, test);
-//        adapter.setClickListener(this);
+        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
+        adapter.setClickListener(this);
 
         recyclerView.setAdapter(adapter);
     }
@@ -137,7 +135,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         EditText text = (EditText)findViewById(R.id.addTitle);
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
-        //get info from API
+        //todo get info from API
         String author = "Author";
         List<String> genre = Collections.singletonList("Genre");
         List<String> subjects = Collections.singletonList("subjects");
