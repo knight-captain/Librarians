@@ -15,8 +15,7 @@ import java.util.List;
 
 public class AddBooksManually extends AppCompatActivity {
 
-
-    public static final String TAG = "AddBooksManually: ";
+    public static final String TAG = "AddBooksManually";
 
     DataBaseHelper dataBaseHelper;
     Book book;
@@ -24,9 +23,9 @@ public class AddBooksManually extends AppCompatActivity {
     EditText titleTV;
     EditText authorTV;
     EditText genreTV;
-    EditText subjectsTV;
+    EditText subjectTV;
     EditText isbnTV;
-    EditText descriptionTV;
+    EditText notesTV;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,7 @@ public class AddBooksManually extends AppCompatActivity {
         //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
         if(book.getTitle() != null) {
             titleTV = (EditText)findViewById(R.id.titleManual);
-            titleTV.setText(book.getTitle(), TextView.BufferType.EDITABLE);
+            titleTV.setText(book.getTitle()/*, TextView.BufferType.EDITABLE*/);
         }
         if(book.getAuthor() != null) {
             authorTV = (EditText)findViewById(R.id.authorManual);
@@ -53,26 +52,28 @@ public class AddBooksManually extends AppCompatActivity {
             genreTV.setText(book.getGenres().toString());
         }
 
-        // TODO Does not like the EditText wants to be a TextField
-//        if(book.getSubjects() != null) {
-//            subjectsTV = (EditText)findViewById(R.id.subjectsManual);
-//            subjectsTV.setText(book.getSubjects().toString());
-//        }
+        // Does not like the EditText wants to be a TextField
+        if(book.getSubjects() != null) {
+            subjectTV = (EditText)findViewById(R.id.subjectsManual);
+            subjectTV.setText(book.getSubjects().toString());
+        }
 
-        // TODO Error about int can't be a null
-//        if(book.getISBN() != null) {
-//            isbnTV = (EditText)findViewById(R.id.isbnManual);
-//            isbnTV.setText(book.getISBN().toString());
-//        }
+        // Error about int can't be a null -> needed to be an int = -1
+        if(book.getISBN() != -1) {
+            Log.i(TAG, "You got here");
+            isbnTV = (EditText)findViewById(R.id.isbnManual);
+            isbnTV.setText(book.getISBN());
+        }
+
         if(book.getNotes() != null) {
-            descriptionTV = (EditText)findViewById(R.id.descriptionManual);
-            descriptionTV.setText(book.getNotes().toString());
+            notesTV = (EditText)findViewById(R.id.descriptionManual);
+            notesTV.setText(book.getNotes().toString());
         }
 
 
-        Button manualbutton = findViewById(R.id.manualButton);
-        manualbutton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {addBookManually(); }
+        Button manualButton = findViewById(R.id.manualButton);
+        manualButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) { addBookManually(); }
         });
 
         Button cancelButton = findViewById(R.id.cancelButton);
@@ -82,41 +83,37 @@ public class AddBooksManually extends AppCompatActivity {
             }
         });
 
-        Button manualButton = findViewById(R.id.manualButton);
-        manualButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {addBookManually(); }
-        });
+//        Button manualButton = findViewById(R.id.manualButton);
+//        manualButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {addBookManually(); }
+//        });
 
     }
 
     public void addBookManually(){
-        titleTV = (EditText)findViewById(R.id.titleManual);
+        titleTV = (EditText) findViewById(R.id.titleManual);
         String title = titleTV.getText().toString();
 
-        authorTV = (EditText)findViewById(R.id.authorManual);
-        String author = authorTV.getText().toString();
+        authorTV = (EditText) findViewById(R.id.authorManual);
+        String authorName = authorTV.getText().toString();
 
-        genreTV = (EditText)findViewById(R.id.genreManual);
+        genreTV = (EditText) findViewById(R.id.genreManual);
         String genre = genreTV.getText().toString();
         List<String> genres = new ArrayList<>();
 
-        //TODO Subject field, like Genre's
-
+        subjectTV = (EditText) findViewById(R.id.subjectsManual);
+        String subject = subjectTV.getText().toString();
         List<String> subjects = new ArrayList<>();
-        String subject = "text";
 
-        //TODO ISBN field
         isbnTV = (EditText)findViewById(R.id.isbnManual);
-        int ISBN = -1;
+        int ISBN = Integer.parseInt(isbnTV.getText().toString() ); //TODO ISBN's are too big for Int!
 
-        //TODO notes field
-        descriptionTV = (EditText)findViewById(R.id.descriptionManual);
-        String description = subjectsTV.getText().toString();
-        String note = descriptionTV.getText().toString();
+        notesTV = (EditText)findViewById(R.id.descriptionManual);
+        String note = notesTV.getText().toString();
 
         //add a test book
         book.setTitle(title);
-        book.setAuthor(author);
+        book.setAuthor(authorName);
 
         book.setGenres(genres);
         book.addGenre(genre);

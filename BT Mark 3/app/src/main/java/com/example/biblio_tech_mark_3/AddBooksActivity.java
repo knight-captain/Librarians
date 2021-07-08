@@ -48,7 +48,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             genre.add("Non-Fiction" + i);
             List<String> subjects = new ArrayList<String>();
             subjects.add("Testing" + i);
-            Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
+            Book testBook = new Book(1, "TEST" + i, new Author("Robertson"), genre, subjects,-1 - i, "This property intentionally left blank"  + i);
             resultList.add(testBook);
         }
 
@@ -57,7 +57,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         recyclerView = findViewById(R.id.possibleBooks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+//  TODO Needed again? below are in showBooksOnRecyclerView
         adapter = new AddBooksRecyclerViewAdapter(this, resultList);
         adapter.setClickListener(this);
 
@@ -117,7 +117,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         String title = text.getText().toString();
         Log.i(TAG, "You clicked the add title button" + title);
         //todo get info from API
-        String author = "Author";
+        Author author = new Author("Author");
         List<String> genre = Collections.singletonList("Genre");
         List<String> subjects = Collections.singletonList("subjects");
 
@@ -136,7 +136,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, "You clicked the add title button" + ISBN);
         //get info from API
         String title = "Title";
-        String author = "Author";
+        Author author = new Author("authFromISBN");
         List<String> genre = Collections.singletonList("Genre");
         List<String> subjects = Collections.singletonList("subjects");
 
@@ -164,7 +164,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,"Unknown",null,null,null,-1,"This field intentionally left blank");
+        Book blankBook = new Book(-1,null,new Author(null),null,null,-1,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);

@@ -48,7 +48,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 //title, author, List genres, List Subjects, int ISBN, longString Description
                 int bookID = cursor.getInt(0);
                 String bookTitle = cursor.getString(1);
-                String bookAuthor = cursor.getString(2);
+                Author bookAuthor = new Author( cursor.getString(2));
                 List<String> bookGenres = Arrays.asList(cursor.getString(3));
                 List<String> bookSubjects = Arrays.asList(cursor.getString(4));
                 int bookISBN = cursor.getInt(5);
