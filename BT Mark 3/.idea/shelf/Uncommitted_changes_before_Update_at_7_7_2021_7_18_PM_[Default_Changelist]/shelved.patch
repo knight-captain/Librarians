@@ -1,0 +1,475 @@
+Index: app/src/main/java/com/example/biblio_tech_mark_3/AddBooksRecyclerViewAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.biblio_tech_mark_3;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.Context;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.List;\r\n\r\npublic class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRecyclerViewAdapter.ViewHolder> {\r\n\r\n    public static final String TAG = \"!!!AddBooksAdapter!!!\";\r\n\r\n    private List<Book> mData;\r\n    private LayoutInflater mInflater;\r\n    private ItemClickListener mClickListener;\r\n\r\n    // data is passed into the constructor\r\n    AddBooksRecyclerViewAdapter(Context context, List<Book> data) {\r\n        this.mInflater = LayoutInflater.from(context);\r\n        this.mData = data;\r\n    }\r\n\r\n    // inflates the row layout from xml when needed\r\n    @Override\r\n    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {\r\n        View view = mInflater.inflate(R.layout.add_books_recyclerview_row, parent, false);\r\n        return new ViewHolder(view);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(AddBooksRecyclerViewAdapter.ViewHolder holder, int position) {\r\n        Book book = mData.get(position);\r\n        holder.myTextView.setText(book.toString());\r\n    }\r\n\r\n    // total number of rows\r\n    @Override\r\n    public int getItemCount() { return mData.size(); }\r\n\r\n    // convenience method for getting data at click position\r\n    Book getItem(int id) { return mData.get(id); }\r\n\r\n    // allows clicks events to be caught\r\n    @SuppressLint(\"LongLogTag\")\r\n    void setClickListener(ItemClickListener itemClickListener) {\r\n        this.mClickListener = itemClickListener;\r\n        Log.i(TAG,\"@ setClickListener = \" + mClickListener);\r\n    }\r\n\r\n    // parent activity will implement this method to respond to click events\r\n    public interface ItemClickListener {\r\n        void onItemClick(View view, int position);\r\n    }\r\n\r\n    // stores and recycles views as they are scrolled off screen\r\n    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {\r\n        TextView myTextView;\r\n\r\n        ViewHolder(View itemView) {\r\n            super(itemView);\r\n            myTextView = itemView.findViewById(R.id.addBookRowName);\r\n            itemView.setOnClickListener(this);\r\n        }\r\n\r\n        @Override\r\n        public void onClick(View view) {\r\n            if (mClickListener != null) {\r\n                mClickListener.onItemClick(view, getAdapterPosition());\r\n                // this sends the click to ViewBooksActivity.onItemClick()\r\n            } else {\r\n                Log.i(TAG, \"mClickListener = \" + mClickListener);\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/biblio_tech_mark_3/AddBooksRecyclerViewAdapter.java	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/java/com/example/biblio_tech_mark_3/AddBooksRecyclerViewAdapter.java	(date 1625275613975)
+@@ -51,7 +51,7 @@
+     @SuppressLint("LongLogTag")
+     void setClickListener(ItemClickListener itemClickListener) {
+         this.mClickListener = itemClickListener;
+-        Log.i(TAG,"@ setClickListener = " + mClickListener);
++        Log.i(TAG,"set" + mClickListener);
+     }
+ 
+     // parent activity will implement this method to respond to click events
+@@ -75,7 +75,7 @@
+                 mClickListener.onItemClick(view, getAdapterPosition());
+                 // this sends the click to ViewBooksActivity.onItemClick()
+             } else {
+-                Log.i(TAG, "mClickListener = " + mClickListener);
++                Log.i(TAG, "onClick was null " + mClickListener);
+             }
+         }
+     }
+Index: app/src/main/res/layout/activity_manage_shelves.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ManageShelvesActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView7\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginLeft=\"28dp\"\r\n        android:layout_marginTop=\"48dp\"\r\n        android:text=\"Add New Shelf\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:id=\"@+id/textInputLayout\"\r\n        android:layout_width=\"246dp\"\r\n        android:layout_height=\"23dp\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginLeft=\"20dp\"\r\n        android:layout_marginTop=\"48dp\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/textView7\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView8\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginLeft=\"28dp\"\r\n        android:layout_marginTop=\"44dp\"\r\n        android:text=\"Delete shelf\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView7\" />\r\n\r\n    <RadioGroup\r\n        android:layout_width=\"246dp\"\r\n        android:layout_height=\"133dp\"\r\n        android:layout_marginStart=\"36dp\"\r\n        android:layout_marginLeft=\"36dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/textView8\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textInputLayout\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_manage_shelves.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/res/layout/activity_manage_shelves.xml	(date 1625706006162)
+@@ -47,4 +47,15 @@
+         app:layout_constraintStart_toEndOf="@+id/textView8"
+         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+ 
++    <Button
++        android:id="@+id/manageFinishButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="160dp"
++        android:layout_marginLeft="160dp"
++        android:layout_marginTop="324dp"
++        android:text="@string/manageFinishButton"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">Biblio-Tech-Mark-3</string>\r\n    <string name=\"title\">Personal Library</string>\r\n    <string name=\"picofbooks\">Stack of Books</string>\r\n    <string name=\"search_button\">Search Library</string>\r\n    <string name=\"add_book_button\">Add a Book to Library</string>\r\n    <string name=\"manage_library_button\">Manage Library</string>\r\n    <string name=\"findLabel\">Find: </string>\r\n    <string name=\"find_input\">search</string>\r\n    <string name=\"authorbutton\">Author</string>\r\n    <string name=\"titlebutton\">Title</string>\r\n    <string name=\"keywordbutton\">Keyword</string>\r\n    <string name=\"addTitle_label\">Search by Title to Add:</string>\r\n    <string name=\"addTitle\">Title</string>\r\n    <string name=\"addTitleButton\">Add</string>\r\n    <string name=\"addISBN_label\">Search by ISBN to Add:</string>\r\n    <string name=\"addISBN\">ISBN</string>\r\n    <string name=\"addISBNButton\">Add</string>\r\n    <string name=\"addManualButton\">Add Book Manually</string>\r\n    <string name=\"titleManual_label\">Title:</string>\r\n    <string name=\"titleManual\">Title</string>\r\n    <string name=\"authorManual_label\">Author:</string>\r\n    <string name=\"authorManual\">Author</string>\r\n    <string name=\"genreManual_label\">Genre:</string>\r\n    <string name=\"genreManual\">genre</string>\r\n    <string name=\"manualButton\">Add Book</string>\r\n\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/res/values/strings.xml	(date 1625705808585)
+@@ -10,19 +10,29 @@
+     <string name="authorbutton">Author</string>
+     <string name="titlebutton">Title</string>
+     <string name="keywordbutton">Keyword</string>
+-    <string name="addTitle_label">Search by Title to Add:</string>
++    <string name="addTitle_label">Search by Title:</string>
+     <string name="addTitle">Title</string>
+     <string name="addTitleButton">Add</string>
+-    <string name="addISBN_label">Search by ISBN to Add:</string>
++    <string name="addISBN_label">Search by ISBN:</string>
+     <string name="addISBN">ISBN</string>
+     <string name="addISBNButton">Add</string>
+     <string name="addManualButton">Add Book Manually</string>
++    <string name="cancelAddManualButton">Cancel</string>
+     <string name="titleManual_label">Title:</string>
+     <string name="titleManual">Title</string>
+     <string name="authorManual_label">Author:</string>
+     <string name="authorManual">Author</string>
+     <string name="genreManual_label">Genre:</string>
+     <string name="genreManual">genre</string>
++    <string name="subjectsManual_label">Subjects:</string>
++    <string name="subjectsManual">subject</string>
++    <string name="isbnManual_label">ISBN:</string>
++    <string name="isbnManual">isbn</string>
++    <string name="descriptionManual_label">Description:</string>
++    <string name="descriptionManual">description</string>
+     <string name="manualButton">Add Book</string>
++    <string name="cancelManualButton">Cancel</string>
++    <string name="viewFinishButton">Done</string>
++    <string name="manageFinishButton">Done</string>
+ 
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/biblio_tech_mark_3/ManageShelvesActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.biblio_tech_mark_3;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class ManageShelvesActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_manage_shelves);\r\n\r\n        Intent intent = getIntent();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/biblio_tech_mark_3/ManageShelvesActivity.java	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/java/com/example/biblio_tech_mark_3/ManageShelvesActivity.java	(date 1625706006083)
+@@ -2,6 +2,8 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+@@ -13,5 +15,10 @@
+         setContentView(R.layout.activity_manage_shelves);
+ 
+         Intent intent = getIntent();
++        Button manageFinishButton = findViewById(R.id.manageFinishButton);
++        manageFinishButton.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {finish(); }
++        });
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_add_books_manually.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".AddBooksManually\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/titleManual\"\r\n        android:layout_width=\"215dp\"\r\n        android:layout_height=\"45dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginLeft=\"24dp\"\r\n        android:layout_marginTop=\"112dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"@string/titleManual\"\r\n        android:inputType=\"textPersonName\"\r\n        android:text=\"@string/titleManual\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/titleManual_label\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/authorManual\"\r\n        android:layout_width=\"215dp\"\r\n        android:layout_height=\"43dp\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginLeft=\"28dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"@string/authorManual\"\r\n        android:inputType=\"textPersonName\"\r\n        android:text=\"@string/authorManual\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/authorManual_label\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/titleManual\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/genreManual\"\r\n        android:layout_width=\"215dp\"\r\n        android:layout_height=\"45dp\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginLeft=\"28dp\"\r\n        android:layout_marginTop=\"28dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"@string/genreManual\"\r\n        android:inputType=\"textPersonName\"\r\n        android:text=\"@string/genreManual\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/genreManual_label\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/authorManual\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/titleManual_label\"\r\n        android:layout_width=\"107dp\"\r\n        android:layout_height=\"31dp\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginLeft=\"28dp\"\r\n        android:layout_marginTop=\"112dp\"\r\n        android:text=\"@string/titleManual_label\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/authorManual_label\"\r\n        android:layout_width=\"107dp\"\r\n        android:layout_height=\"31dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginLeft=\"24dp\"\r\n        android:layout_marginTop=\"36dp\"\r\n        android:text=\"@string/authorManual_label\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/titleManual_label\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/genreManual_label\"\r\n        android:layout_width=\"107dp\"\r\n        android:layout_height=\"31dp\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginLeft=\"24dp\"\r\n        android:layout_marginTop=\"36dp\"\r\n        android:text=\"@string/genreManual_label\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/authorManual_label\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/manualButon\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"156dp\"\r\n        android:layout_marginLeft=\"156dp\"\r\n        android:layout_marginTop=\"324dp\"\r\n        android:text=\"@string/manualButton\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_add_books_manually.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/res/layout/activity_add_books_manually.xml	(date 1625705763076)
+@@ -10,13 +10,12 @@
+         android:id="@+id/titleManual"
+         android:layout_width="215dp"
+         android:layout_height="45dp"
+-        android:layout_marginStart="24dp"
+-        android:layout_marginLeft="24dp"
+-        android:layout_marginTop="112dp"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="40dp"
+         android:ems="10"
+         android:hint="@string/titleManual"
+         android:inputType="textPersonName"
+-        android:text="@string/titleManual"
+         app:layout_constraintStart_toEndOf="@+id/titleManual_label"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+@@ -24,13 +23,12 @@
+         android:id="@+id/authorManual"
+         android:layout_width="215dp"
+         android:layout_height="43dp"
+-        android:layout_marginStart="28dp"
+-        android:layout_marginLeft="28dp"
+-        android:layout_marginTop="20dp"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="24dp"
+         android:ems="10"
+         android:hint="@string/authorManual"
+         android:inputType="textPersonName"
+-        android:text="@string/authorManual"
+         app:layout_constraintStart_toEndOf="@+id/authorManual_label"
+         app:layout_constraintTop_toBottomOf="@+id/titleManual" />
+ 
+@@ -38,13 +36,12 @@
+         android:id="@+id/genreManual"
+         android:layout_width="215dp"
+         android:layout_height="45dp"
+-        android:layout_marginStart="28dp"
+-        android:layout_marginLeft="28dp"
+-        android:layout_marginTop="28dp"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="24dp"
+         android:ems="10"
+         android:hint="@string/genreManual"
+         android:inputType="textPersonName"
+-        android:text="@string/genreManual"
+         app:layout_constraintStart_toEndOf="@+id/genreManual_label"
+         app:layout_constraintTop_toBottomOf="@+id/authorManual" />
+ 
+@@ -52,9 +49,9 @@
+         android:id="@+id/titleManual_label"
+         android:layout_width="107dp"
+         android:layout_height="31dp"
+-        android:layout_marginStart="28dp"
+-        android:layout_marginLeft="28dp"
+-        android:layout_marginTop="112dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginLeft="24dp"
++        android:layout_marginTop="40dp"
+         android:text="@string/titleManual_label"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+@@ -85,10 +82,93 @@
+         android:id="@+id/manualButon"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="156dp"
+-        android:layout_marginLeft="156dp"
+-        android:layout_marginTop="324dp"
++        android:layout_marginStart="72dp"
++        android:layout_marginLeft="72dp"
++        android:layout_marginTop="456dp"
+         android:text="@string/manualButton"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
++
++    <Button
++        android:id="@+id/cancelManualButton"
++        android:layout_width="109dp"
++        android:layout_height="49dp"
++        android:layout_marginStart="40dp"
++        android:layout_marginLeft="40dp"
++        android:layout_marginTop="32dp"
++        android:text="@string/cancelManualButton"
++        app:layout_constraintStart_toEndOf="@+id/manualButon"
++        app:layout_constraintTop_toBottomOf="@+id/descriptionManual" />
++
++    <TextView
++        android:id="@+id/subjectsManual"
++        android:layout_width="104dp"
++        android:layout_height="27dp"
++        android:layout_marginStart="28dp"
++        android:layout_marginLeft="28dp"
++        android:layout_marginTop="36dp"
++        android:text="@string/subjectsManual_label"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/genreManual_label" />
++
++    <TextView
++        android:id="@+id/isbnManual_label"
++        android:layout_width="104dp"
++        android:layout_height="32dp"
++        android:layout_marginStart="28dp"
++        android:layout_marginLeft="28dp"
++        android:layout_marginTop="36dp"
++        android:text="@string/isbnManual"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/subjectsManual" />
++
++    <TextView
++        android:id="@+id/descriptionMaanual_label"
++        android:layout_width="105dp"
++        android:layout_height="32dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginLeft="24dp"
++        android:layout_marginTop="36dp"
++        android:text="@string/descriptionManual_label"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/isbnManual_label" />
++
++    <EditText
++        android:id="@+id/isbnManual"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="20dp"
++        android:ems="10"
++        android:hint="@string/isbnManual"
++        android:inputType="textPersonName"
++        app:layout_constraintStart_toEndOf="@+id/isbnManual_label"
++        app:layout_constraintTop_toBottomOf="@+id/subjectManual" />
++
++    <EditText
++        android:id="@+id/descriptionManual"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="24dp"
++        android:ems="10"
++        android:hint="@string/descriptionManual"
++        android:inputType="textPersonName"
++        app:layout_constraintStart_toEndOf="@+id/descriptionMaanual_label"
++        app:layout_constraintTop_toBottomOf="@+id/isbnManual" />
++
++    <EditText
++        android:id="@+id/subjectManual"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="32dp"
++        android:layout_marginLeft="32dp"
++        android:layout_marginTop="24dp"
++        android:ems="10"
++        android:hint="@string/subjectsManual"
++        android:inputType="textPersonName"
++        app:layout_constraintStart_toEndOf="@+id/subjectsManual"
++        app:layout_constraintTop_toBottomOf="@+id/genreManual" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/biblio_tech_mark_3/Book.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.biblio_tech_mark_3;\r\n\r\nimport java.util.List;\r\n\r\npublic class Book { //title, author, List genres, List Subjects, int ISBN, longString Description\r\n\r\n    private int id;\r\n    private String title; //Title String -> related to Work\r\n    private String author; //The Author ->lookup from Author(s) key (usually one)\r\n    private List<String> genres; //More than one?\r\n    private List<String> subjects; //~6+2=8 long    entries__subjects__004, entries__subjects__005, entries__subjects__006, entries__subjects__001, entries__subjects__002,\tentries__subjects__003 [subject_places], [subject_people];\r\n    private int ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix\r\n    private String notes; // also notes entries__first_sentence__value, entries__description, entries__description__value; //Have each value concatenate, not List?\r\n//    private boolean owned;\r\n    //Many others:\r\n//    private String entries__key; //The Edition Key\r\n//    entries__subtitle;\r\n//    entries__contributors__role, entries__contributors__name;\r\n//    entries__series__001, entries__series__002;\r\n//    entries__isbn_13__-\tentries__dewey_decimal_class__-\tentries__identifiers__librarything__-\tentries__identifiers__goodreads__-\tentries__identifiers__amazon__-\tentries__covers__-;\r\n//    entries__physical_format\tentries__edition_name\tentries__languages__key\tentries__publishers__-\tentries__publish_date;\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        return title + \"  by \"+ author + \"\\n\" +\r\n                \"ISBN=\" + ISBN  + '\\n' +\r\n                \"Notes:'\" + notes;\r\n    }\r\n\r\n    public int getId() {\r\n        return id;\r\n    }\r\n\r\n    public String getTitle() {\r\n        return title;\r\n    }\r\n\r\n    public void setTitle(String title) {\r\n        this.title = title;\r\n    }\r\n\r\n    public String getAuthor() { return author; }\r\n\r\n    public void setAuthor(String author) { this.author = author; }\r\n\r\n    public List<String> getGenres() { return genres; }\r\n\r\n    public void setGenres(List<String> genres) { this.genres = genres; }\r\n\r\n    public List<String> getSubjects() { return subjects; }\r\n\r\n    public void setSubjects(List<String> subjects) { this.subjects = subjects; }\r\n\r\n    public String getNotes() {\r\n        return notes;\r\n    }\r\n\r\n    public void setNotes(String notes) { this.notes += notes; }\r\n\r\n    public int getISBN() {\r\n        return ISBN;\r\n    }\r\n\r\n    public void setISBN(int ISBN) { this.ISBN = ISBN; }\r\n\r\n    public Book(int id, String title, String author, List<String> genres, List<String> subjects, int ISBN, String notes) {\r\n        this.id = id;\r\n        this.title = title;\r\n        this.author = author;\r\n        this.genres = genres;\r\n        this.subjects = subjects;\r\n        this.ISBN = ISBN;\r\n        this.notes = notes;\r\n    }\r\n\r\n    public Book() {\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/biblio_tech_mark_3/Book.java	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/java/com/example/biblio_tech_mark_3/Book.java	(date 1625699519705)
+@@ -1,10 +1,14 @@
+ package com.example.biblio_tech_mark_3;
+ 
++import com.google.gson.annotations.SerializedName;
++
++import java.util.ArrayList;
+ import java.util.List;
+ 
+ public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
+ 
+     private int id;
++    @SerializedName("title")
+     private String title; //Title String -> related to Work
+     private String author; //The Author ->lookup from Author(s) key (usually one)
+     private List<String> genres; //More than one?
+@@ -35,33 +39,29 @@
+     public String getTitle() {
+         return title;
+     }
+-
+     public void setTitle(String title) {
+         this.title = title;
+     }
+ 
+     public String getAuthor() { return author; }
+-
+     public void setAuthor(String author) { this.author = author; }
+ 
+     public List<String> getGenres() { return genres; }
+-
+     public void setGenres(List<String> genres) { this.genres = genres; }
++    public void addGenre(String subject){ this.genres.add(subject); }
+ 
+     public List<String> getSubjects() { return subjects; }
+-
+     public void setSubjects(List<String> subjects) { this.subjects = subjects; }
++    public void addSubject(String subject){ this.subjects.add(subject); }
+ 
+     public String getNotes() {
+         return notes;
+     }
+-
+-    public void setNotes(String notes) { this.notes += notes; }
++    public void setNotes(String notes) { this.notes = notes; }
+ 
+     public int getISBN() {
+         return ISBN;
+     }
+-
+     public void setISBN(int ISBN) { this.ISBN = ISBN; }
+ 
+     public Book(int id, String title, String author, List<String> genres, List<String> subjects, int ISBN, String notes) {
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ .idea/misc.xml	(date 1625705312962)
+@@ -3,7 +3,4 @@
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+-  <component name="ProjectType">
+-    <option name="id" value="Android" />
+-  </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/biblio_tech_mark_3/LibraryLoadFromJson.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.biblio_tech_mark_3;\r\n\r\n//TODO Currently not bing used. Will prolly be used once to import the library from Google Sheet/TSV\r\n\r\nimport android.content.Context;\r\nimport android.util.Log;\r\n\r\nimport com.google.gson.Gson;\r\n\r\nimport java.io.*;\r\n\r\npublic class LibraryLoadFromJson {\r\n    //    private static String librarySaveData = \"ShortLibrary\";// fix to Android\r\n    //using a string instead\r\n    public static String testJson =\r\n            \"{\\\"name\\\":\\\"Shelf\\\",\\\"books\\\":[\" +\r\n                    \"{\\\"Series\\\":\\\"The Chronicles of Narnia\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"B\\\\u0026N Collectable\\\",\\\"Author\\\":\\\"C.S. Lewis\\\",\\\"TITLE\\\":\\\"The Chronicles of Narnia\\\",\\\"# \\\":\\\"\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"MG\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Chronicles of Narnia\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Hardcover\\\",\\\"Author\\\":\\\"C.S. Lewis\\\",\\\"TITLE\\\":\\\"The Chronicles of Narnia\\\",\\\"# \\\":\\\"\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"MG\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Chronicles of Narnia\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Paperback\\\",\\\"Author\\\":\\\"C.S. Lewis\\\",\\\"TITLE\\\":\\\"The Chronicles of Narnia\\\",\\\"# \\\":\\\"\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"MG\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Lord of the Rings\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Paperback; Boxed\\\",\\\"Author\\\":\\\"J.R.R. Tolkein\\\",\\\"TITLE\\\":\\\"The Hobbit\\\",\\\"# \\\":\\\"0\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"A\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Lord of the Rings\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Paperback; Boxed\\\",\\\"Author\\\":\\\"J.R.R. Tolkein\\\",\\\"TITLE\\\":\\\"The Fellowship of the Ring\\\",\\\"# \\\":\\\"1\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"A\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Lord of the Rings\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Paperback; Boxed\\\",\\\"Author\\\":\\\"J.R.R. Tolkein\\\",\\\"TITLE\\\":\\\"The Two Towers\\\",\\\"# \\\":\\\"2\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"A\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Lord of the Rings\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Paperback; Boxed\\\",\\\"Author\\\":\\\"J.R.R. Tolkein\\\",\\\"TITLE\\\":\\\"The Return of the King\\\",\\\"# \\\":\\\"3\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"A\\\"},\" +\r\n                    \"{\\\"Series\\\":\\\"The Lord of the Rings\\\",\\\"Subtitle\\\":\\\"\\\",\\\"Sub-genre \\\":\\\"Epic Fantasy\\\",\\\"Genre \\\":\\\"SF/F\\\",\\\"Editions/Language\\\":\\\"Boxed\\\",\\\"Author\\\":\\\"J.R.R. Tolkein\\\",\\\"TITLE\\\":\\\"The Lord of the Rings\\\",\\\"# \\\":\\\"\\\",\\\"Illustrator/Translator/Editor\\\":\\\"\\\",\\\"Age\\\":\\\"A\\\"}]}\";\r\n    public static final String TAG = \"!LibraryLoadFromJson!\";\r\n\r\n    public static Shelf readFile() {\r\n\r\n        Shelf json = null;\r\n\r\n        Gson gson = new Gson();\r\n        json = gson.fromJson(testJson, Shelf.class);\r\n\r\n        //TODO Below needs to be fixed to android\r\n        //SQLite: https://developer.android.com/training/data-storage/sqlite\r\n        Log.i(TAG,\"this should save this file onto the device...\");\r\n        MainActivity.SaveData(json);\r\n\r\n        Log.i(TAG,\"returning json to Loader\");\r\n        return json;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/biblio_tech_mark_3/LibraryLoadFromJson.java	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/java/com/example/biblio_tech_mark_3/LibraryLoadFromJson.java	(date 1625699519705)
+@@ -12,16 +12,7 @@
+ public class LibraryLoadFromJson {
+     //    private static String librarySaveData = "ShortLibrary";// fix to Android
+     //using a string instead
+-    public static String testJson =
+-            "{\"name\":\"Shelf\",\"books\":[" +
+-                    "{\"Series\":\"The Chronicles of Narnia\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"B\\u0026N Collectable\",\"Author\":\"C.S. Lewis\",\"TITLE\":\"The Chronicles of Narnia\",\"# \":\"\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"MG\"}," +
+-                    "{\"Series\":\"The Chronicles of Narnia\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Hardcover\",\"Author\":\"C.S. Lewis\",\"TITLE\":\"The Chronicles of Narnia\",\"# \":\"\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"MG\"}," +
+-                    "{\"Series\":\"The Chronicles of Narnia\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Paperback\",\"Author\":\"C.S. Lewis\",\"TITLE\":\"The Chronicles of Narnia\",\"# \":\"\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"MG\"}," +
+-                    "{\"Series\":\"The Lord of the Rings\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Paperback; Boxed\",\"Author\":\"J.R.R. Tolkein\",\"TITLE\":\"The Hobbit\",\"# \":\"0\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"A\"}," +
+-                    "{\"Series\":\"The Lord of the Rings\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Paperback; Boxed\",\"Author\":\"J.R.R. Tolkein\",\"TITLE\":\"The Fellowship of the Ring\",\"# \":\"1\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"A\"}," +
+-                    "{\"Series\":\"The Lord of the Rings\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Paperback; Boxed\",\"Author\":\"J.R.R. Tolkein\",\"TITLE\":\"The Two Towers\",\"# \":\"2\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"A\"}," +
+-                    "{\"Series\":\"The Lord of the Rings\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Paperback; Boxed\",\"Author\":\"J.R.R. Tolkein\",\"TITLE\":\"The Return of the King\",\"# \":\"3\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"A\"}," +
+-                    "{\"Series\":\"The Lord of the Rings\",\"Subtitle\":\"\",\"Sub-genre \":\"Epic Fantasy\",\"Genre \":\"SF/F\",\"Editions/Language\":\"Boxed\",\"Author\":\"J.R.R. Tolkein\",\"TITLE\":\"The Lord of the Rings\",\"# \":\"\",\"Illustrator/Translator/Editor\":\"\",\"Age\":\"A\"}]}";
++    public static String testJson = "";
+     public static final String TAG = "!LibraryLoadFromJson!";
+ 
+     public static Shelf readFile() {
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n}\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.3\"\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.biblio_tech_mark_3\"\r\n        minSdkVersion 16\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.appcompat:appcompat:1.3.0'\r\n    implementation 'com.google.android.material:material:1.3.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    implementation fileTree(dir: 'C:\\\\Users\\\\McVey\\\\.m2\\\\repository\\\\com\\\\google\\\\code\\\\gson\\\\gson\\\\2.8.5', include: ['*.aar', '*.jar'], exclude: [])\r\n    implementation files('C:\\\\Users\\\\McVey\\\\AndroidStudioProjects\\\\gson-2.8.7')\r\n    testImplementation 'junit:junit:4.+'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/build.gradle	(date 1625705288054)
+@@ -35,6 +35,7 @@
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+     implementation fileTree(dir: 'C:\\Users\\McVey\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.8.5', include: ['*.aar', '*.jar'], exclude: [])
+     implementation files('C:\\Users\\McVey\\AndroidStudioProjects\\gson-2.8.7')
++    implementation fileTree(dir: 'C:\\Users\\rward\\Downloads\\gson-2.2.2.jar', include: ['*.aar', '*.jar'], exclude: [])
+     testImplementation 'junit:junit:4.+'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$/..\" vcs=\"Git\" />\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ .idea/vcs.xml	(date 1625705207170)
+@@ -2,6 +2,5 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.biblio_tech_mark_3\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.BiblioTechMark3\">\r\n        <activity android:name=\".AddBooksManually\"></activity>\r\n        <activity android:name=\".ManageShelvesActivity\" />\r\n        <activity android:name=\".AddBooksActivity\" />\r\n        <activity android:name=\".ViewBooksActivity\" />\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ app/src/main/AndroidManifest.xml	(date 1625699519703)
+@@ -2,9 +2,12 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.example.biblio_tech_mark_3">
+ 
++    <uses-permission android:name="android.permission.INTERNET"/>
++
+     <application
+         android:allowBackup="true"
+         android:icon="@mipmap/ic_launcher"
++        android:usesCleartextTraffic="true"
+         android:label="@string/app_name"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 07bf6f39e9509bd664a4d0198c9d3aede7c6de52)
++++ .idea/gradle.xml	(date 1625706345338)
+@@ -7,6 +7,7 @@
+         <option name="testRunner" value="PLATFORM" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="16" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
