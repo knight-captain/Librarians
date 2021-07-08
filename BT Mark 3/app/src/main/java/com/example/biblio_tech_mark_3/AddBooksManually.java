@@ -60,14 +60,13 @@ public class AddBooksManually extends AppCompatActivity {
 
         // Error about int can't be a null -> needed to be an int = -1
         if(book.getISBN() != -1) {
-            Log.i(TAG, "You got here");
             isbnTV = (EditText)findViewById(R.id.isbnManual);
-            isbnTV.setText(book.getISBN());
+            isbnTV.setText(Integer.toString( book.getISBN() ));
         }
 
         if(book.getNotes() != null) {
             notesTV = (EditText)findViewById(R.id.descriptionManual);
-            notesTV.setText(book.getNotes().toString());
+            notesTV.setText(String.valueOf( book.getNotes() ));
         }
 
 

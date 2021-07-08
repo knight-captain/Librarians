@@ -57,9 +57,9 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         recyclerView = findViewById(R.id.possibleBooks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//  TODO Needed again? below are in showBooksOnRecyclerView
-        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-        adapter.setClickListener(this);
+//        Needed again? below are in showBooksOnRecyclerView
+//        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
+//        adapter.setClickListener(this);
 
         showBooksOnRecyclerView();
 
@@ -164,7 +164,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,null,new Author(null),null,null,-1,"This field intentionally left blank");
+        Book blankBook = new Book(-1,null,new Author(null),null,null,9780671504397,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);
