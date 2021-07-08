@@ -1,10 +1,14 @@
 package com.example.biblio_tech_mark_3;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
 
     private int id;
+    @SerializedName("title")
     private String title; //Title String -> related to Work
     private String author; //The Author ->lookup from Author(s) key (usually one)
     private List<String> genres; //More than one?
@@ -35,33 +39,29 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
 
     public String getAuthor() { return author; }
-
     public void setAuthor(String author) { this.author = author; }
 
     public List<String> getGenres() { return genres; }
-
     public void setGenres(List<String> genres) { this.genres = genres; }
+    public void addGenre(String subject){ this.genres.add(subject); }
 
     public List<String> getSubjects() { return subjects; }
-
     public void setSubjects(List<String> subjects) { this.subjects = subjects; }
+    public void addSubject(String subject){ this.subjects.add(subject); }
 
     public String getNotes() {
         return notes;
     }
-
-    public void setNotes(String notes) { this.notes += notes; }
+    public void setNotes(String notes) { this.notes = notes; }
 
     public int getISBN() {
         return ISBN;
     }
-
     public void setISBN(int ISBN) { this.ISBN = ISBN; }
 
     public Book(int id, String title, String author, List<String> genres, List<String> subjects, int ISBN, String notes) {

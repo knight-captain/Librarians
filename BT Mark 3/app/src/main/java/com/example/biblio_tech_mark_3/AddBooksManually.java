@@ -17,6 +17,11 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class AddBooksManually extends AppCompatActivity {
+
+
+    public static final String TAG = "!!!AddBooksManually!!!";
+
+
     DataBaseHelper dataBaseHelper;
     Book book;
 
@@ -26,7 +31,6 @@ public class AddBooksManually extends AppCompatActivity {
     EditText subjectsTV;
     EditText isbnTV;
     EditText descriptionTV;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,13 @@ public class AddBooksManually extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button manualButton = findViewById(R.id.manualButton);
+        manualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {addBookManually(); }
+        });
+
     }
 
     public void addBookManually(){
@@ -98,8 +109,7 @@ public class AddBooksManually extends AppCompatActivity {
         List<String> genres = new ArrayList<>();
 
         //TODO Subject field, like Genre's
-//        subjectsTV = (EditText)findViewById(R.id.subjectsManual);
-//        String subject =subjectsTV.getText().toString();
+
         List<String> subjects = new ArrayList<>();
         String subject = "text";
 
@@ -117,9 +127,10 @@ public class AddBooksManually extends AppCompatActivity {
         book.setAuthor(author);
 
         book.setGenres(genres);
-//        book.addGenre(genre);
+        book.addGenre(genre);
         book.setSubjects(subjects);
-//        book.addSubject(subject);
+        book.addSubject(subject);
+
         book.setISBN(ISBN);
         book.setNotes(note);
 
@@ -127,5 +138,6 @@ public class AddBooksManually extends AppCompatActivity {
         Log.i(TAG,"added test book: " + book.toString() + " and helper has " + dataBaseHelper);
 
         finish();
+
     }
 }
