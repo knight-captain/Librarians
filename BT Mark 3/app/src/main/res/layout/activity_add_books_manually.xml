@@ -16,7 +16,6 @@
         android:ems="10"
         android:hint="@string/titleManual"
         android:inputType="textPersonName"
-        android:text="@string/titleManual"
         app:layout_constraintStart_toEndOf="@+id/titleManual_label"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +29,6 @@
         android:ems="10"
         android:hint="@string/authorManual"
         android:inputType="textPersonName"
-        android:text="@string/authorManual"
         app:layout_constraintStart_toEndOf="@+id/authorManual_label"
         app:layout_constraintTop_toBottomOf="@+id/titleManual" />
 
@@ -44,7 +42,6 @@
         android:ems="10"
         android:hint="@string/genreManual"
         android:inputType="textPersonName"
-        android:text="@string/genreManual"
         app:layout_constraintStart_toEndOf="@+id/genreManual_label"
         app:layout_constraintTop_toBottomOf="@+id/authorManual" />
 
@@ -82,13 +79,24 @@
         app:layout_constraintTop_toBottomOf="@+id/authorManual_label" />
 
     <Button
-        android:id="@+id/manualButon"
+        android:id="@+id/manualButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
         android:layout_marginTop="324dp"
         android:text="@string/manualButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/cancelButton"
+        app:layout_constraintStart_toEndOf="@+id/manualButton"
+        app:layout_constraintTop_toBottomOf="@+id/genreManual" />
 </androidx.constraintlayout.widget.ConstraintLayout>

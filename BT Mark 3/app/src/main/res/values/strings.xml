@@ -24,5 +24,7 @@
     <string name="genreManual_label">Genre:</string>
     <string name="genreManual">genre</string>
     <string name="manualButton">Add Book</string>
+    <string name="cancelButton">Cancel</string>
+    <string name="doneButton">Done</string>
 
 </resources>

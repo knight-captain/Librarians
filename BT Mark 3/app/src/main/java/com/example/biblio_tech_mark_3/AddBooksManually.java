@@ -9,14 +9,12 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
 public class AddBooksManually extends AppCompatActivity {
-
-    DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +23,19 @@ public class AddBooksManually extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        dataBaseHelper = new DataBaseHelper(this);
-
-
-
-        Button manualbutton = findViewById(R.id.manualButon);
+        Button manualbutton = findViewById(R.id.manualButton);
         manualbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {addBookManually(); }
         });
 
-        //add book to database
+        Button cancelButton = findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void addBookManually(){
@@ -46,19 +46,13 @@ public class AddBooksManually extends AppCompatActivity {
         String author = etauthor.getText().toString();
 
         EditText etgenre = (EditText)findViewById(R.id.genreManual);
-        String firstGenre = etgenre.getText().toString();
-
-        //add a test book
-        //title, author, List genres, List Subjects, int ISBN, longString Description
-        List<String> genre = new ArrayList<String>();
-        genre.add(firstGenre);
-        List<String> subjects = new ArrayList<String>();
-        genre.add("Testing");
-        Book test = new Book(1, title, author, genre, subjects,-1, "This book was made by the AddBooks button");
-        dataBaseHelper.addOne(test);
-        Log.i(TAG,"added test book: " + test.toString() + " and helper has " + dataBaseHelper);
-
+        List<String> genre = Collections.singletonList(etgenre.getText().toString());
+        List<String> subjects = Collections.singletonList("subject");
+        //create new book
+            Book newBook = new Book(1, title, author, genre, subjects,0000000000000, "This property intentionally left blank");
+      //  dataBaseHelper.addOne(test);
+        //add to database
         Log.i(TAG, "You added this book" + title + " " + author + " " + genre);
-
+        finish();
     }
 }
