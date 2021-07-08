@@ -19,7 +19,7 @@ import static android.content.ContentValues.TAG;
 public class AddBooksManually extends AppCompatActivity {
 
 
-    public static final String TAG = "!!!AddBooksManually!!!";
+    public static final String TAG = "AddBooksManually: ";
 
 
     DataBaseHelper dataBaseHelper;

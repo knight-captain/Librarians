@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooksRecyclerViewAdapter.ViewHolder> {
 
-    public static final String TAG = "!!!ViewBooksActivity!!!";
+    public static final String TAG = "ViewBooksRecyclerViewAdapter: ";
 
     private List<Book> mData;
     private LayoutInflater mInflater;

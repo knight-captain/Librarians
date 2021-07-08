@@ -23,7 +23,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
     EditText text;
 
-    public static final String TAG = "!!!AddBooksActivity!!!";
+    public static final String TAG = "AddBooksActivity: ";
 
     RecyclerView recyclerView;
     AddBooksRecyclerViewAdapter adapter;
@@ -35,6 +35,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_books);
 
+        // don't really need this intent?
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         Log.i(TAG, message + " Received from Main");
@@ -51,15 +52,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             Book testBook = new Book(1, "TEST" + i, "unknown" + i, genre, subjects,-1 - i, "This property intentionally left blank"  + i);
             resultList.add(testBook);
         }
-
-        resultList = new ArrayList<>();
-
-        List<String> genre = new ArrayList<String>();
-        genre.add("Non-Fiction" );
-        List<String> subjects = new ArrayList<String>();
-        subjects.add("Testing");
-        Book testBook = new Book(1, "TEST", "unknown" , genre, subjects,-1, "This property intentionally left blank");
-        resultList.add(testBook);
 
 
         //The RecyclerView and its Adapter

@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public class Loader extends AppCompatActivity implements Runnable{
 
     private Activity ma;
-    public static final String TAG = "!!!Loader!!!";
+    public static final String TAG = "Loader: ";
 
     @Override
     public void run() {

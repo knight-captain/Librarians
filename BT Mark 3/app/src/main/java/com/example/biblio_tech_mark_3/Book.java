@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
 
+    public static final String TAG = "Book: ";
+
     private int id;
     @SerializedName("title")
     private String title; //Title String -> related to Work

@@ -13,7 +13,7 @@ public class LibraryLoadFromJson {
     //    private static String librarySaveData = "ShortLibrary";// fix to Android
     //using a string instead
     public static String testJson = "";
-    public static final String TAG = "!LibraryLoadFromJson!";
+    public static final String TAG = "LibraryLoadFromJson: ";
 
     public static Shelf readFile() {
 

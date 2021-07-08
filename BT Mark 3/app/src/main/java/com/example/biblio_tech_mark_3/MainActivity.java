@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "!!!Main activity!!!";
+    public static final String TAG = "MainActivity: ";
     public static final String EXTRA_MESSAGE = "com.example.biblio_tech_mark_3.MESSAGE";
 
     DataBaseHelper dataBaseHelper;

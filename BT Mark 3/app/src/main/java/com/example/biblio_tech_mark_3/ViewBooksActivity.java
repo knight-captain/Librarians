@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRecyclerViewAdapter.ItemClickListener {
 
-    public static final String TAG = "!!!ViewBooksActivity!!!";
+    public static final String TAG = "ViewBooksActivity: ";
 
     RecyclerView recyclerView;
     ViewBooksRecyclerViewAdapter adapter;
