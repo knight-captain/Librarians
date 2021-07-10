@@ -4,7 +4,7 @@
     <string name="picofbooks">Stack of Books</string>
     <string name="search_button">Search Library</string>
     <string name="add_book_button">Add a Book to Library</string>
-    <string name="manage_library_button">Manage Library</string>
+    <string name="manage_library_button">Biblio_Tech 2.0</string>
     <string name="findLabel">Find: </string>
     <string name="find_input">search</string>
     <string name="authorbutton">Author</string>
@@ -17,7 +17,7 @@
     <string name="addISBN">ISBN</string>
     <string name="addISBNButton">Add</string>
     <string name="addManualButton">Add Book Manually</string>
-    <string name="manageFinishButton">Cancel</string>
+    <string name="manageFinishButton">Finish</string>
     <string name="titleManual_label">Title:</string>
     <string name="titleManual">Title</string>
     <string name="authorManual_label">Author:</string>
@@ -33,6 +33,7 @@
     <string name="manualButton">Add Book</string>
     <string name="cancelButton">Cancel</string>
     <string name="doneButton">Done</string>
+    <string name="manageText">Features for Biblio-Tech 2.0: Delete books from library, personal categories and information</string>
 
 
 </resources>

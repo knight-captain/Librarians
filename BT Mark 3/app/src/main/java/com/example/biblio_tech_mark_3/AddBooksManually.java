@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -71,7 +72,9 @@ public class AddBooksManually extends AppCompatActivity {
 
         Button manualButton = findViewById(R.id.manualButton);
         manualButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) { addBookManually(); }
+            public void onClick(View v) {
+                addBookManually();
+            }
         });
 
         Button cancelButton = findViewById(R.id.cancelButton);
@@ -124,7 +127,9 @@ public class AddBooksManually extends AppCompatActivity {
         dataBaseHelper.addOne(book);
         Log.i(TAG,"added test book: " + book.toString() + " and helper has " + dataBaseHelper);
 
-        finish();
+        Toast toast = Toast.makeText(this, "Book Saved", Toast.LENGTH_SHORT);
+        toast.show();
+       // finish();
 
     }
 }
