@@ -2,7 +2,6 @@ package com.example.biblio_tech_mark_3;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Book { //title, author, List genres, List Subjects, int ISBN, longString Description
@@ -12,10 +11,12 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     private int id;
     @SerializedName("title")
     private String title; //Title String -> related to Work
-    private String author; //The Author ->lookup from Author(s) key (usually one)
+    private Author author; //todo The Author ->lookup from Author(s) key (usually one)
     private List<String> genres; //More than one?
+    @SerializedName("subjects")
     private List<String> subjects; //~6+2=8 long    entries__subjects__004, entries__subjects__005, entries__subjects__006, entries__subjects__001, entries__subjects__002,	entries__subjects__003 [subject_places], [subject_people];
-    private int ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix
+    private long ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix
+    @SerializedName("description")
     private String notes; // also notes entries__first_sentence__value, entries__description, entries__description__value; //Have each value concatenate, not List?
 //    private boolean owned;
     //Many others:
@@ -29,7 +30,7 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
 
     @Override
     public String toString() {
-        return title + "  by "+ author + "\n" +
+        return title + "  by "+ author.getName() + "\n" +
                 "ISBN=" + ISBN  + '\n' +
                 "Notes:'" + notes;
     }
@@ -45,8 +46,8 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
         this.title = title;
     }
 
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
+    public String getAuthor() { return author.getName(); }
+    public void setAuthor(String authorName) { this.author.setName(authorName); }
 
     public List<String> getGenres() { return genres; }
     public void setGenres(List<String> genres) { this.genres = genres; }
@@ -61,12 +62,10 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     }
     public void setNotes(String notes) { this.notes = notes; }
 
-    public int getISBN() {
-        return ISBN;
-    }
-    public void setISBN(int ISBN) { this.ISBN = ISBN; }
+    public long getISBN() { return ISBN; }
+    public void setISBN(long ISBN) { this.ISBN = ISBN; }
 
-    public Book(int id, String title, String author, List<String> genres, List<String> subjects, int ISBN, String notes) {
+    public Book(int id, String title, Author author, List<String> genres, List<String> subjects, long ISBN, String notes) {
         this.id = id;
         this.title = title;
         this.author = author;

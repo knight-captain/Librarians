@@ -23,7 +23,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
 
     // data is passed into the constructor
     ViewBooksRecyclerViewAdapter(Context context, DataBaseHelper data) {
-        Log.i(TAG,"@ ini ");
         this.mInflater = LayoutInflater.from(context);
         this.mData = data.getAllBooks();
     }
@@ -31,7 +30,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     // inflates the row layout from xml when needed.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.i(TAG,"@ onCreateViewHolder ");
         View view = mInflater.inflate(R.layout.recyclerview_row, parent, false); //R.layout.X is the row's xml recourse
         return new ViewHolder(view);
     }
@@ -39,7 +37,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.i(TAG,"@ onBindViewHolder ");
         Book book = mData.get(position);
         holder.myTextView.setText(book.toString());
     }
@@ -57,7 +54,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
-        Log.i(TAG,"@ setClickListener ");
     }
 
     // parent activity will implement this method to respond to click events
@@ -71,7 +67,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
 
         ViewHolder(View itemView) {
             super(itemView);
-            Log.i(TAG,"@ ViewHolder.ViewHolder ");
             myTextView = itemView.findViewById(R.id.bookRowName);
             itemView.setOnClickListener(this);
         }
@@ -79,8 +74,6 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
         //this is where the click happens
         @Override
         public void onClick(View view) {
-            Log.i(TAG,"@ ViewHolder.onClick ");
-
             if (mClickListener != null) {
                 mClickListener.onItemClick(view, getAdapterPosition());
                 // this sends the click to ViewBooksActivity.onItemClick()

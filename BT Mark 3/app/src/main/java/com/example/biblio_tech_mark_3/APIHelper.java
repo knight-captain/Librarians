@@ -27,33 +27,40 @@ public class APIHelper implements Callable<List<Book>> {
     @Override
     public List<Book> call() throws Exception {
         Log.i(TAG,"starting API");
-        String query = String.format("%s/%s/%s.json",openLibURL, apiType, ISBN);
-        System.out.println(query);
+
 
         if (ISBN != null) {
-            try
-            {
-                URLConnection connection = new URL(query).openConnection();
-                connection.setRequestProperty("Accept-Charset", charset);
-                InputStream response = connection.getInputStream();
-
-                try (Scanner scanner = new Scanner(response))
-                {
-                    String responseBody = scanner.useDelimiter("\\A").next();
-                    Log.i(TAG, responseBody);
-                    Book test = JsonHelper.jsonToBook(responseBody);
-                    Log.i(TAG,String.format("%s by %s about %s & %s; ISBN: %d. Notes: %s", test.getTitle(), test.getAuthor(), String.valueOf(test.getGenres()),String.valueOf(test.getSubjects()), test.getISBN(), test.getNotes() ));
-                    results.add(test);
-                }
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-
+            results = lookupISBN(ISBN);
             return results;
         }else{
             return null;
         }
+    }
+
+    protected List<Book> lookupISBN(String ISBN){
+        String query = String.format("%s/%s/%s.json",openLibURL, apiType, ISBN);
+        System.out.println(query);
+
+        try
+        {
+            URLConnection connection = new URL(query).openConnection();
+            connection.setRequestProperty("Accept-Charset", charset);
+            InputStream response = connection.getInputStream();
+
+            try (Scanner scanner = new Scanner(response))
+            {
+                String responseBody = scanner.useDelimiter("\\A").next();
+                Log.i(TAG, responseBody);
+                Book test = JsonHelper.jsonToBook(responseBody);
+                Log.i(TAG,String.format("%s by %s about %s & %s; ISBN: %d. Notes: %s", test.getTitle(), test.getAuthor(), String.valueOf(test.getGenres()),String.valueOf(test.getSubjects()), test.getISBN(), test.getNotes() ));
+                results.add(test);
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // should never get here?
+        return results;
     }
 
     public APIHelper (String title, String ISBN){

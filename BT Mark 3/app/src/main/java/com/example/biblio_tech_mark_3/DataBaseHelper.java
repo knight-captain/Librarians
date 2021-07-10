@@ -48,10 +48,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 //title, author, List genres, List Subjects, int ISBN, longString Description
                 int bookID = cursor.getInt(0);
                 String bookTitle = cursor.getString(1);
-                String bookAuthor = cursor.getString(2);
+                Author bookAuthor = new Author( cursor.getString(2));
                 List<String> bookGenres = Arrays.asList(cursor.getString(3));
                 List<String> bookSubjects = Arrays.asList(cursor.getString(4));
-                int bookISBN = cursor.getInt(5);
+                long bookISBN = cursor.getInt(5);
                 String bookNotes = cursor.getString(6);
 
                 Book newBook = new Book(bookID, bookTitle, bookAuthor, bookGenres, bookSubjects, bookISBN, bookNotes);
@@ -103,7 +103,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //create new table
         Log.i(TAG,"Creating DB (if there isn't one?)" );
-        String createTableStatement = "CREATE TABLE " + BOOK_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_BOOK_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_BOOK_GENRE + " TEXT, " + COLUMN_BOOK_SUBJECTS + " ARRAY, " + COLUMN_ISBN_13 + " INT, " + COLUMN_NOTES + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + BOOK_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_BOOK_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_BOOK_GENRE + " TEXT, " + COLUMN_BOOK_SUBJECTS + " ARRAY, " + COLUMN_ISBN_13 + " BIGINT, " + COLUMN_NOTES + " TEXT)";
 
         db.execSQL(createTableStatement);
     }
