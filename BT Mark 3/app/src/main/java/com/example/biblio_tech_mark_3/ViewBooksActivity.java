@@ -37,10 +37,11 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         //below is in showBooksOnRecyclerView; does it need to be here?
-        adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
-        adapter.setClickListener(this);
+        //This is where it crashes
+//        adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
+//        adapter.setClickListener(this);
 
-        showBooksOnRecyclerView();
+//        showBooksOnRecyclerView();
 
         Button titleButton = findViewById(R.id.titlebutton);
         titleButton.setOnClickListener(new View.OnClickListener() {

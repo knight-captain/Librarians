@@ -8,10 +8,9 @@
 
     <EditText
         android:id="@+id/addTitle"
-        android:layout_width="236dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="193dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/addTitle"
@@ -22,10 +21,9 @@
 
     <TextView
         android:id="@+id/addTitle_label"
-        android:layout_width="86dp"
-        android:layout_height="20dp"
+        android:layout_width="113dp"
+        android:layout_height="27dp"
         android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
         android:layout_marginTop="24dp"
         android:text="@string/addTitle_label"
         android:textSize="14sp"
@@ -34,54 +32,25 @@
 
     <Button
         android:id="@+id/addTitleButton"
-        android:layout_width="52dp"
-        android:layout_height="32dp"
+        android:layout_width="72dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="@string/addTitleButton"
         android:textSize="8sp"
         app:layout_constraintStart_toEndOf="@+id/addTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/addISBN_label"
-        android:layout_width="92dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/addISBN_label"
-        android:textSize="14sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTitle_label" />
-
-    <EditText
-        android:id="@+id/addISBN"
-        android:layout_width="234dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:hint="@string/addISBN"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/addISBN_label"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/addISBNButton"
-        android:layout_width="55dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="12dp"
         android:text="@string/addISBNButton"
-        android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@+id/addISBN"
-        app:layout_constraintTop_toBottomOf="@+id/addTitleButton" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTitle" />
 
     <Button
         android:id="@+id/addManualButton"

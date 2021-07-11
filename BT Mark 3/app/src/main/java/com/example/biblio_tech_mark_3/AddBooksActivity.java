@@ -1,15 +1,21 @@
 package com.example.biblio_tech_mark_3;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +27,8 @@ import java.util.concurrent.FutureTask;
 public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyclerViewAdapter.ItemClickListener{
 
     EditText text;
+    Button addISBNbutton;
+    String ISBN;
 
     public static final String TAG = "AddBooksActivity: ";
 
@@ -89,6 +97,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
                 }
             }
         });
+
         Button addManualButton = findViewById(R.id.addManualButton);
         addManualButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,11 +138,18 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         //TODO grab missing info from other isbns
     }
-    public void addISBN() throws ExecutionException, InterruptedException {
-        EditText text = (EditText)findViewById(R.id.addISBN);
-        String ISBN = text.getText().toString();
 
-        Log.i(TAG, "You clicked the add title button" + ISBN);
+    public void addISBN() throws ExecutionException, InterruptedException {
+
+        //scanner code
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Scanning Code");
+        integrator.initiateScan();
+
+        Log.i(TAG, "You clicked the add ISBN button");
         //get info from API
         String title = "Title";
         Author author = new Author("authFromISBN");
@@ -184,4 +200,50 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         startActivity(intent);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode,data);
+        if (result != null){
+            if(result.getContents() != null){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(result.getContents());
+//               ISBN =result.getContents();
+//                Log.i(TAG, "The number you scanned " + ISBN);
+                builder.setTitle("Scanning Result");
+                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            addISBN();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Finish", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        ISBN =result.getContents();
+//                        Log.i(TAG, "The number you scanned " + ISBN);
+                       finish();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+            else{
+                Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();
+            }
+        } else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+
+
+
 }

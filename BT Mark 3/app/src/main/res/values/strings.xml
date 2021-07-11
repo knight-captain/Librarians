@@ -15,7 +15,7 @@
     <string name="addTitleButton">Add</string>
     <string name="addISBN_label">Search by ISBN:</string>
     <string name="addISBN">ISBN</string>
-    <string name="addISBNButton">Add</string>
+    <string name="addISBNButton">Scan ISBN</string>
     <string name="addManualButton">Add Book Manually</string>
     <string name="manageFinishButton">Finish</string>
     <string name="titleManual_label">Title:</string>
