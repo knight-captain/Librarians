@@ -36,16 +36,16 @@ public class AddBooksManually extends AppCompatActivity {
         String bookInJsonForm = intent.getStringExtra("bookInJsonForm");
         book = JsonHelper.jsonToBook(bookInJsonForm);
 
-        Log.i(TAG, "Got: " + book.getTitle() + " " + book.getAuthor() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
+        Log.i(TAG, "Got: " + book.getTitle() + " " + book.getAuthorName() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
 
         //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
         if(book.getTitle() != null) {
             titleTV = (EditText)findViewById(R.id.titleManual);
             titleTV.setText(book.getTitle()/*, TextView.BufferType.EDITABLE*/);
         }
-        if(book.getAuthor() != null) {
+        if(book.getAuthorName() != null) {
             authorTV = (EditText)findViewById(R.id.authorManual);
-            authorTV.setText(book.getAuthor());
+            authorTV.setText(book.getAuthorName());
         }
         if(book.getGenres() != null) {
             genreTV = (EditText)findViewById(R.id.genreManual);
@@ -114,7 +114,7 @@ public class AddBooksManually extends AppCompatActivity {
 
         //add a test book
         book.setTitle(title);
-        book.setAuthor(authorName);
+        book.setAuthorName(authorName);
 
         book.setGenres(genres);
         book.addGenre(genre);

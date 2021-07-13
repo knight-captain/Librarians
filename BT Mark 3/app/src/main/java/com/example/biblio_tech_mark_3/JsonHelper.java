@@ -23,4 +23,12 @@ public class JsonHelper {
         bookInBookForm = gson.fromJson(json, Book.class);
         return bookInBookForm;
     }
+
+    public static Author jsonToAuthor(String json){
+        Log.i(TAG, "jsonToAuthor");
+        Author author;
+        Gson gson = new Gson();
+        author = gson.fromJson(json, Author.class);
+        return author;
+    }
 }

@@ -56,7 +56,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             genre.add("Non-Fiction" + i);
             List<String> subjects = new ArrayList<String>();
             subjects.add("Testing" + i);
-            Book testBook = new Book(1, "TEST" + i, new Author("Robertson"), genre, subjects,1000000000000l + i, "This property intentionally left blank"  + i);
+            Book testBook = new Book(1, "TEST" + i, new Author ("/authors/OL34184A"), genre, subjects,1000000000000l + i, "This property intentionally left blank"  + i);
             resultList.add(testBook);
         }
 
@@ -65,9 +65,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         recyclerView = findViewById(R.id.possibleBooks);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        Needed again? below are in showBooksOnRecyclerView
-//        adapter = new AddBooksRecyclerViewAdapter(this, resultList);
-//        adapter.setClickListener(this);
 
         showBooksOnRecyclerView();
 
@@ -97,7 +94,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
                 }
             }
         });
-
         Button addManualButton = findViewById(R.id.addManualButton);
         addManualButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,11 +102,10 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Button doneButton = findViewById(R.id.manageFinishButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
-            }
+            public void onClick(View v) { finish(); }
         });
     }
+
     //This updates the RecyclerView
     public void showBooksOnRecyclerView() {
 
@@ -120,67 +115,12 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         recyclerView.setAdapter(adapter);
     }
 
-    public void addTitle() throws ExecutionException, InterruptedException {
-
-        EditText text = (EditText)findViewById(R.id.addTitle);
-        String title = text.getText().toString();
-        Log.i(TAG, "You clicked the add title button" + title);
-        //todo get info from API
-        Author author = new Author("Author");
-        List<String> genre = Collections.singletonList("Genre");
-        List<String> subjects = Collections.singletonList("subjects");
-
-        //create new book
-        Book newBook = new Book(1, title, author, genre, subjects,0000000000000, "This property intentionally left blank");
-        //  dataBaseHelper.addOne(test);
-
-        //TODO lookup title as work on API and return list to recyclerView
-
-        //TODO grab missing info from other isbns
-    }
-
-    public void addISBN() throws ExecutionException, InterruptedException {
-
-        //scanner code
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setCaptureActivity(CaptureAct.class);
-        integrator.setOrientationLocked(false);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-        integrator.setPrompt("Scanning Code");
-        integrator.initiateScan();
-
-        Log.i(TAG, "You clicked the add ISBN button");
-        //get info from API
-        String title = "Title";
-        Author author = new Author("authFromISBN");
-        List<String> genre = Collections.singletonList("Genre");
-        List<String> subjects = Collections.singletonList("subjects");
-
-        //create new book
-                Book newBook = new Book(1, title, author, genre, subjects,0000000000000, "This property intentionally left blank");
-        //  dataBaseHelper.addOne(test);
-
-        Log.i(TAG, "You clicked the add ISBN button" + ISBN);
-
-        //TODO lookup individual book by isbn and return it to the recyclerView
-        APIHelper apiH = new APIHelper(null, ISBN);
-        FutureTask apiTask = new FutureTask(apiH);
-        Thread lookupThread = new Thread(apiTask);
-        lookupThread.start();
-
-        resultList = (List<Book>) apiTask.get();
-
-
-        showBooksOnRecyclerView();
-        //TODO grab missing info from other isbns
-        //TODO Camera grab ISBN
-    }
     public void addManual(){
         Log.i(TAG, "You clicked the add manual button");
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,null,new Author(null),null,null, 9780671504397l,"This field intentionally left blank");
+        Book blankBook = new Book(-1,null, new Author(null),null,null, 9780671504397l,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);
@@ -199,6 +139,51 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         intent.putExtra("bookInJsonForm",bookInJsonForm);
 
         startActivity(intent);
+    }
+
+    public void addTitle() throws ExecutionException, InterruptedException {
+
+        EditText text = (EditText) findViewById(R.id.addTitle);
+        String title = text.getText().toString();
+        Log.i(TAG, "You clicked the add title button" + title);
+        //todo get info from API
+
+        //TODO lookup title as work on API and return list to recyclerView
+        APIHelper apiH = new APIHelper( title,"9780140328721");
+        FutureTask apiTask = new FutureTask(apiH);
+        Thread lookupThread = new Thread(apiTask);
+        lookupThread.start();
+
+        resultList = (List<Book>) apiTask.get();
+        showBooksOnRecyclerView();
+
+        //TODO grab missing info from other isbns
+    }
+
+    public void addISBN() throws ExecutionException, InterruptedException {
+
+        //scanner code
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Scanning Code");
+        integrator.initiateScan();
+
+        //get info from API
+        Log.i(TAG, "You clicked the add ISBN button" + ISBN);
+
+        //TODO lookup individual book by isbn and return it to the recyclerView
+        APIHelper apiH = new APIHelper(null, ISBN);
+        FutureTask apiTask = new FutureTask(apiH);
+        Thread lookupThread = new Thread(apiTask);
+        lookupThread.start();
+
+        resultList = (List<Book>) apiTask.get();
+
+        showBooksOnRecyclerView();
+        //TODO grab missing info from other isbns
+        //TODO Camera grab ISBN
     }
 
     @Override
@@ -241,9 +226,4 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
-
-
-
 }

@@ -72,7 +72,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         //title, author, List genres, List Subjects, int ISBN, longString Description
         cv.put(COLUMN_BOOK_TITLE, book.getTitle());
-        cv.put(COLUMN_AUTHOR, book.getAuthor());
+        cv.put(COLUMN_AUTHOR, book.getAuthorName());
         cv.put(COLUMN_BOOK_GENRE, String.valueOf(book.getGenres()));
         cv.put(COLUMN_BOOK_SUBJECTS, String.valueOf(book.getSubjects()));
         cv.put(COLUMN_ISBN_13, book.getISBN());

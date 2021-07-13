@@ -11,6 +11,8 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     private int id;
     @SerializedName("title")
     private String title; //Title String -> related to Work
+    @SerializedName("authors")
+    private List<Author> authors; //Open Library returns a list of Author(s)
     private Author author; //todo The Author ->lookup from Author(s) key (usually one)
     private List<String> genres; //More than one?
     @SerializedName("subjects")
@@ -30,7 +32,7 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
 
     @Override
     public String toString() {
-        return title + "  by "+ author.getName() + "\n" +
+        return title + "  by " + author.getName() + "\n" +
                 "ISBN=" + ISBN  + '\n' +
                 "Notes:'" + notes;
     }
@@ -46,8 +48,11 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
         this.title = title;
     }
 
-    public String getAuthor() { return author.getName(); }
-    public void setAuthor(String authorName) { this.author.setName(authorName); }
+    public String getAuthorName() { return author.getName(); }
+    public void setAuthorName(String authorName) { this.author.setName(authorName); }
+    public void setAuthor(Author author){ this.author = author; }
+
+    public Author getFirstAuthor(){ return this.authors.get(0); }
 
     public List<String> getGenres() { return genres; }
     public void setGenres(List<String> genres) { this.genres = genres; }
