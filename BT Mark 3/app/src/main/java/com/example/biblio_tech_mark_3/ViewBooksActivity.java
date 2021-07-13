@@ -103,20 +103,22 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
         // search the library by keyword and display results
     }
 
+    //from https://youtu.be/M1XEqqo6Ktg
+    //Make the new object, and it needs parameters: drag directions & swipe directions. Should autopopuulate methods
     ItemTouchHelper.SimpleCallback iTHCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        //ignore this one
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
             return false;
         }
-
-        @Override
+        //Make sure recycerView is put in here
         public void onSwiped( RecyclerView.ViewHolder recyclerView, int direction) {
             Log.i(TAG, "You clicked " + adapter.getItem(recyclerView.getAdapterPosition()) + " on row number " + recyclerView.getAdapterPosition());
-
+            //get your data, then invoke the delete method, passing in the item
             dataBaseHelper.deleteOne(adapter.getItem(recyclerView.getAdapterPosition()));
-            adapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged(); //not sure why this is needed?
 
-            showBooksOnRecyclerView();
+            showBooksOnRecyclerView(); //as always, update the view
         }
     };
 }
