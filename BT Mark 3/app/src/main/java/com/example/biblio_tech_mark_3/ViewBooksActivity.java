@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,12 +38,10 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
         recyclerView = findViewById(R.id.book_info);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        //below is in showBooksOnRecyclerView; does it need to be here?
-        //This is where it crashes
-//        adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
-//        adapter.setClickListener(this);
 
-//        showBooksOnRecyclerView();
+
+        //This is where it crashes
+        showBooksOnRecyclerView(); //needs this to "update" the Rcyclerview the first time
 
         Button titleButton = findViewById(R.id.titlebutton);
         titleButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
     @Override
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
-        dataBaseHelper.deleteOne(adapter.getItem(position));
+//        dataBaseHelper.deleteOne(adapter.getItem(position));
         showBooksOnRecyclerView();
     }
 
@@ -71,6 +71,8 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
     public void showBooksOnRecyclerView() {
         adapter = new ViewBooksRecyclerViewAdapter(this, dataBaseHelper);
         adapter.setClickListener(this);
+
+        new ItemTouchHelper(iTHCallback).attachToRecyclerView(recyclerView);
 
         recyclerView.setAdapter(adapter);
     }
@@ -100,4 +102,21 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
 
         // search the library by keyword and display results
     }
+
+    ItemTouchHelper.SimpleCallback iTHCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped( RecyclerView.ViewHolder recyclerView, int direction) {
+            Log.i(TAG, "You clicked " + adapter.getItem(recyclerView.getAdapterPosition()) + " on row number " + recyclerView.getAdapterPosition());
+
+            dataBaseHelper.deleteOne(adapter.getItem(recyclerView.getAdapterPosition()));
+            adapter.notifyDataSetChanged();
+
+            showBooksOnRecyclerView();
+        }
+    };
 }
