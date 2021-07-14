@@ -11,7 +11,7 @@ public class Author {
     public String getKey() { return key; }
     public void setKey(String key) { this.key = key; }
 
-    public Author (String key) {
-        this.key = key;
+    public Author (String name) {
+        this.name = name;
     }
 }

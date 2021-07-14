@@ -9,20 +9,14 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     public static final String TAG = "Book: ";
 
     private int id;
-    @SerializedName("key")
-    private String key; //EG: "/works/OL27516W"
-    @SerializedName("title")
-    private String title; //Title String -> related to Work
-    @SerializedName("authors")
-    private List<Author> authors; //Open Library returns a list of Author(s)
+    @SerializedName(value="key") private String key; //EG: "/works/OL27516W"
+    @SerializedName(value="title") private String title; //Title String -> related to Work
+    @SerializedName(value="authors") private List<Author> authors; //Open Library returns a list of Author(s)
     private Author author; //todo The Author ->lookup from Author(s) key (usually one)
     private List<String> genres; //More than one?
-    @SerializedName("subjects")
-    private List<String> subjects; //~6+2=8 long    entries__subjects__004, entries__subjects__005, entries__subjects__006, entries__subjects__001, entries__subjects__002,	entries__subjects__003 [subject_places], [subject_people];
-    @SerializedName(value="isbn_13", alternate={"isbn_10"})
-    private long ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix
-    @SerializedName("description")
-    private String notes; // also notes entries__first_sentence__value, entries__description, entries__description__value; //Have each value concatenate, not List?
+    @SerializedName(value="subjects") private List<String> subjects; //~6+2=8 long    entries__subjects__004, entries__subjects__005, entries__subjects__006, entries__subjects__001, entries__subjects__002,	entries__subjects__003 [subject_places], [subject_people];
+    @SerializedName(value="isbn_13", alternate={"isbn_10"}) private long ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix
+    @SerializedName(value="description") private String notes; // also notes entries__first_sentence__value, entries__description, entries__description__value; //Have each value concatenate, not List?
 //    private boolean owned;
     //Many others:
 //    private String entries__key; //The Edition Key

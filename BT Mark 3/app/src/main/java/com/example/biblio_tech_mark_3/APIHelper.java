@@ -70,7 +70,6 @@ public class APIHelper implements Callable<List<Book>> {
                 }
 
                 for (String bookKey : bookKeys){
-                    Log.i(TAG, bookKey);
                     if (results.size() < 10) {
                         try {
                             Book book = lookupKey(bookKey);

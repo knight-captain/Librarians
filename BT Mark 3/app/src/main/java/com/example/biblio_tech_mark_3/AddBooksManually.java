@@ -96,7 +96,8 @@ public class AddBooksManually extends AppCompatActivity {
         String title = titleTV.getText().toString();
 
         authorTV = (EditText) findViewById(R.id.authorManual);
-        String authorName = authorTV.getText().toString();
+        Author author = new Author(authorTV.getText().toString());
+//        String authorName = ;
 
         genreTV = (EditText) findViewById(R.id.genreManual);
         String genre = genreTV.getText().toString();
@@ -114,7 +115,7 @@ public class AddBooksManually extends AppCompatActivity {
 
         //add a test book
         book.setTitle(title);
-        book.setAuthorName(authorName);
+        book.setAuthor(author);
 
         book.setGenres(genres);
         book.addGenre(genre);

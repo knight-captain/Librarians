@@ -30,7 +30,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     Button addISBNbutton;
     String ISBN;
 
-    public static final String TAG = "AddBooksActivity: ";
+    public static final String TAG = "AddBooksActivity";
 
     RecyclerView recyclerView;
     AddBooksRecyclerViewAdapter adapter;
@@ -49,17 +49,10 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         resultList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            //add a test book
-            //title, author, List genres, List Subjects, int ISBN, longString Description
-            List<String> genre = new ArrayList<String>();
-            genre.add("Non-Fiction" + i);
-            List<String> subjects = new ArrayList<String>();
-            subjects.add("Testing" + i);
-            Book testBook = new Book(1, "TEST" + i, new Author ("/authors/OL34184A"), genre, subjects,1000000000000l + i, "This property intentionally left blank"  + i);
-            resultList.add(testBook);
-        }
-
+//        //add a test book
+//        //title, author, List genres, List Subjects, int ISBN, longString Description
+//        Book testBook = new Book(1, "Search for a Title above!", null, null, null,1000000000000l, "Or scan an ISBN with your camara!");
+//        resultList.add(testBook);
 
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.possibleBooks);
@@ -120,7 +113,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,null, new Author(null),null,null, 9780671504397l,"This field intentionally left blank");
+        Book blankBook = new Book(-1,null, new Author(null),null,null, 9780671504397L,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);
