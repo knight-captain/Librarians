@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Book {
+    //todo set all to private and make necessary getters & setters
     private List<String> publishers;
     public Identifiers identifiers;
     public List<Integer> covers;

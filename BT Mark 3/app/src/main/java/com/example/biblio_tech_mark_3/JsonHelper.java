@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 public class JsonHelper {
 
@@ -24,7 +25,7 @@ public class JsonHelper {
 
         Gson gson = new Gson();
         try {
-            bookInBookForm = gson.fromJson(json, Book.class);
+            bookInBookForm = gson.fromJson(json, BookOld.class);
             Log.i(TAG,bookInBookForm.getTitle());
             return bookInBookForm;
         } catch (IllegalStateException e){
