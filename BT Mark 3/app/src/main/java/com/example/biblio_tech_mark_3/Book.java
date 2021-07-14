@@ -19,6 +19,7 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     private List<String> genres; //More than one?
     @SerializedName("subjects")
     private List<String> subjects; //~6+2=8 long    entries__subjects__004, entries__subjects__005, entries__subjects__006, entries__subjects__001, entries__subjects__002,	entries__subjects__003 [subject_places], [subject_people];
+    @SerializedName(value="isbn_13", alternate={"isbn_10"})
     private long ISBN; //The book's ISBN13 (not edition key, unique to book=edition). If ISBN10 then add prefix
     @SerializedName("description")
     private String notes; // also notes entries__first_sentence__value, entries__description, entries__description__value; //Have each value concatenate, not List?
