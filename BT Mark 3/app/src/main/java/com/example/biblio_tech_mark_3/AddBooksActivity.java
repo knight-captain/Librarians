@@ -160,6 +160,26 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //TODO grab missing info from other isbns
     }
 
+    public void lookupISBNFromScanner(String ISBN){
+        //TODO lookup individual book by isbn and return it to the recyclerView
+        APIHelper apiH = new APIHelper(null, ISBN);
+        FutureTask apiTask = new FutureTask(apiH);
+        Thread lookupThread = new Thread(apiTask);
+        lookupThread.start();
+
+        try {
+            resultList = (List<Book>) apiTask.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        showBooksOnRecyclerView();
+        //TODO grab missing info from other isbns
+        //TODO Camera grab ISBN
+    }
+
     public void addISBN() throws ExecutionException, InterruptedException {
 
         //scanner code
@@ -170,20 +190,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         integrator.setPrompt("Scanning Code");
         integrator.initiateScan();
 
-        //get info from API
-        Log.i(TAG, "You clicked the add ISBN button" + ISBN);
-
-        //TODO lookup individual book by isbn and return it to the recyclerView
-        APIHelper apiH = new APIHelper(null, ISBN);
-        FutureTask apiTask = new FutureTask(apiH);
-        Thread lookupThread = new Thread(apiTask);
-        lookupThread.start();
-
-        resultList = (List<Book>) apiTask.get();
-
-        showBooksOnRecyclerView();
-        //TODO grab missing info from other isbns
-        //TODO Camera grab ISBN
     }
 
     @Override
@@ -193,8 +199,8 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
             if(result.getContents() != null){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(result.getContents());
-//               ISBN =result.getContents();
-//                Log.i(TAG, "The number you scanned " + ISBN);
+                ISBN = result.getContents();
+                Log.i(TAG, "The number you scanned " + ISBN);
                 builder.setTitle("Scanning Result");
                 builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
                     @Override
@@ -211,9 +217,10 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
                 builder.setNegativeButton("Finish", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        ISBN =result.getContents();
-//                        Log.i(TAG, "The number you scanned " + ISBN);
-                       finish();
+                        ISBN = result.getContents();
+                        Log.i(TAG, "The number you scanned " + ISBN);
+                        lookupISBNFromScanner(ISBN);
+                        finish();
                     }
                 });
                 AlertDialog dialog = builder.create();
