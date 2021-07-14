@@ -9,6 +9,8 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
     public static final String TAG = "Book: ";
 
     private int id;
+    @SerializedName("key")
+    private String key; //EG: "/works/OL27516W"
     @SerializedName("title")
     private String title; //Title String -> related to Work
     @SerializedName("authors")
@@ -37,9 +39,8 @@ public class Book { //title, author, List genres, List Subjects, int ISBN, longS
                 "Notes:'" + notes;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public String getKey() { return key; }
 
     public String getTitle() {
         return title;

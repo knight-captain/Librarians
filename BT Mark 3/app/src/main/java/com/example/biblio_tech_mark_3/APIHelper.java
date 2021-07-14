@@ -4,9 +4,11 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
@@ -20,7 +22,6 @@ public class APIHelper implements Callable<List<Book>> {
     public List<Book> results;
 
     public static String openLibURL = "http://openlibrary.org";
-    public static String apiType = "isbn";//test value
 //    public static String limit = "limit=5";
     public static String charset = "UTF-8";
 
@@ -33,16 +34,85 @@ public class APIHelper implements Callable<List<Book>> {
             results = lookupISBN(ISBN);
             return results;
         }else{
-            return null;
+            results = lookupTitle(title);
+            return results;
         }
     }
 
     protected List<Book> lookupTitle(String title){
+        String formatedTitle = title.replaceAll("\\s+", "+");
+        String query = String.format("%s/%s.json?title=%s", openLibURL, "search", formatedTitle);
+        System.out.println(query);
+
+        try
+        {
+            URLConnection connection = new URL(query).openConnection();
+            connection.setRequestProperty("Accept-Charset", charset);
+            InputStream response = connection.getInputStream();
+
+            try (Scanner scanner = new Scanner(response))
+            {
+                String responseBody = scanner.useDelimiter("\\A").next(); //"\\A" means start of string
+                String str[] = responseBody.split(",");
+                List<String> reponseKeys = new ArrayList<String>();
+                reponseKeys = Arrays.asList(str);
+
+                List<String> bookKeys = new ArrayList<>();
+
+                for (String key : reponseKeys){
+                    if (key.contains("/books/")){
+                        key = key.replaceAll("\\s+", "");
+                        key = key.replaceAll("\"", "");
+                        key = key.replaceAll("seed:", "");
+                        key = key.replace("[","");
+                        bookKeys.add(key);
+                    }
+                }
+                
+                for (String bookKey : bookKeys){
+                    Book book = lookupKey(bookKey);
+                    results.add(book);
+                }
+                return results;
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // should never get here?
+        return null;
+    }
+
+    protected Book lookupKey(String key){
+        String query = String.format("%s%s.json",openLibURL, key);
+        try
+        {
+            URLConnection connection = new URL(query).openConnection();
+            connection.setRequestProperty("Accept-Charset", charset);
+            InputStream response = connection.getInputStream();
+
+            try (Scanner scanner = new Scanner(response))
+            {
+                String responseBody = scanner.useDelimiter("\\A").next();
+                Log.i(TAG, responseBody);
+
+                Book test = JsonHelper.jsonToBook(responseBody);
+                Author authorName = LookupAuthor(test.getFirstAuthor().getKey());
+                test.setAuthor( authorName );
+
+
+                return test;
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // should never get here?
         return null;
     }
 
     protected List<Book> lookupISBN(String ISBN){
-        String query = String.format("%s/%s/%s.json",openLibURL, apiType, ISBN);
+        String query = String.format("%s/%s/%s.json",openLibURL, "isbn", ISBN);
         System.out.println(query);
 
         try
@@ -61,13 +131,14 @@ public class APIHelper implements Callable<List<Book>> {
                 test.setAuthor( authorName );
 
                 results.add(test);
+                return results;
             }
         } catch (IOException e)
         {
             e.printStackTrace();
         }
         // should never get here?
-        return results;
+        return null;
     }
 
     protected Author LookupAuthor(String code) throws IOException {

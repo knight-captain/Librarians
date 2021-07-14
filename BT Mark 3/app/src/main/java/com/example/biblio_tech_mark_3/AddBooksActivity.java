@@ -145,11 +145,11 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
 
         EditText text = (EditText) findViewById(R.id.addTitle);
         String title = text.getText().toString();
-        Log.i(TAG, "You clicked the add title button" + title);
+        Log.i(TAG, "You clicked the add title button: " + title);
         //todo get info from API
 
         //TODO lookup title as work on API and return list to recyclerView
-        APIHelper apiH = new APIHelper( title,"9780140328721");
+        APIHelper apiH = new APIHelper( title,null);
         FutureTask apiTask = new FutureTask(apiH);
         Thread lookupThread = new Thread(apiTask);
         lookupThread.start();
