@@ -141,7 +141,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, "You clicked the add title button: " + title);
         //todo get info from API
 
-        //TODO lookup title as work on API and return list to recyclerView
+        // lookup title using search API and return list to recyclerView
         APIHelper apiH = new APIHelper( title,null);
         FutureTask apiTask = new FutureTask(apiH);
         Thread lookupThread = new Thread(apiTask);

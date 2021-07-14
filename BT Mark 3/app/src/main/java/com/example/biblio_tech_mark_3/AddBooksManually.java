@@ -108,7 +108,14 @@ public class AddBooksManually extends AppCompatActivity {
         List<String> subjects = new ArrayList<>();
 
         isbnTV = (EditText)findViewById(R.id.isbnManual);
-        long ISBN = Long.parseLong( isbnTV.getText().toString() ); //TODO ISBN's are too big for Int!
+        long ISBN = -1;
+        if (!isbnTV.equals("")) {
+            try {
+                ISBN = Long.parseLong(isbnTV.getText().toString()); //ISBN's are too big for Int!
+            } catch (NumberFormatException e){
+                ISBN = 0;
+            }
+        }
 
         notesTV = (EditText)findViewById(R.id.descriptionManual);
         String note = notesTV.getText().toString();
@@ -126,11 +133,9 @@ public class AddBooksManually extends AppCompatActivity {
         book.setNotes(note);
 
         dataBaseHelper.addOne(book);
-        Log.i(TAG,"added test book: " + book.toString() + " and helper has " + dataBaseHelper);
-
+        Log.i(TAG,"added test book: " + book.toString() );
         Toast toast = Toast.makeText(this, "Book Saved", Toast.LENGTH_SHORT);
         toast.show();
-       // finish();
-
+        finish();
     }
 }
