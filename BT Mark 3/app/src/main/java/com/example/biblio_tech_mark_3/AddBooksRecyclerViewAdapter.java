@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,12 +16,12 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
 
     public static final String TAG = "AddBooksRVAdapter: ";
 
-    private List<Book> mData;
+    private List<BookOld> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    AddBooksRecyclerViewAdapter(Context context, List<Book> data) {
+    AddBooksRecyclerViewAdapter(Context context, List<BookOld> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -36,7 +35,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
 
     @Override
     public void onBindViewHolder(AddBooksRecyclerViewAdapter.ViewHolder holder, int position) {
-        Book book = mData.get(position);
+        BookOld book = mData.get(position);
         holder.myTextView.setText(book.toString());
     }
 
@@ -45,7 +44,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
     public int getItemCount() { return mData.size(); }
 
     // convenience method for getting data at click position
-    Book getItem(int id) { return mData.get(id); }
+    BookOld getItem(int id) { return mData.get(id); }
 
     // allows clicks events to be caught
     @SuppressLint("LongLogTag")

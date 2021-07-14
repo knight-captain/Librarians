@@ -18,7 +18,7 @@ public class AddBooksManually extends AppCompatActivity {
     public static final String TAG = "AddBooksManually";
 
     DataBaseHelper dataBaseHelper;
-    Book book;
+    BookOld book;
 
     EditText titleTV;
     EditText authorTV;

@@ -1,8 +1,13 @@
 package com.example.biblio_tech_mark_3;
 
 public class Author {
-    private String name;
-    private String key;
+    public String name;
+    public String personal_name;
+    public LastModified last_modified;
+    public String key;
+    public Type type;
+    public int id;
+    public int revision;
 
 
     public String getName() { return name; }
