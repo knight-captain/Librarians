@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddBooksManually extends AppCompatActivity {
-
+/* The Add books manually activity allows the user to add a book that may not have appeared in the APIs list.
+   There are fields for title, author, genre, subject, isbn(which can be made up) and notes.
+ */
     public static final String TAG = "AddBooksManually";
 
     DataBaseHelper dataBaseHelper;

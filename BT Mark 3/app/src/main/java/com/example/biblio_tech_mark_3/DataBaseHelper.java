@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-
+/* This is the database class. It has functions to get all the books in the database, add, delete books and create it. */
     public static final String TAG = "DataBaseHelper: ";
 
     //title, author, List genres, List Subjects, int ISBN, longString Description
