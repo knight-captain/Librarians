@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+/* This is our search or view books already in our library. It can be searched by title, author or keyword.
+   When the user enters the screen the database is placed in a recycle view to be scrolled through.
+ */
 public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRecyclerViewAdapter.ItemClickListener {
 
     public static final String TAG = "ViewBooksActivity: ";

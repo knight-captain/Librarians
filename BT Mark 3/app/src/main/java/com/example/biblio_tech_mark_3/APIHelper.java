@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
 
-public class APIHelper implements Callable<List<BookOld>> {
-
+public class APIHelper implements Callable<List<Book>> {
+/* This class reads from the API openlibrary. */
     public static final String TAG = "APIHelper";
 
     private String title;
