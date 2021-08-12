@@ -18,7 +18,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -37,7 +36,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     RecyclerView recyclerView;
     AddBooksRecyclerViewAdapter adapter;
 
-    List<Book> resultList;
+    List<BookOld> resultList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +114,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
-        Book blankBook = new Book(-1,null, new Author(null),null,null, 9780671504397L,"This field intentionally left blank");
+        BookOld blankBook = new BookOld(-1,null, new Author(null),null,null, 9780671504397L,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
         intent.putExtra("bookInJsonForm",bookInJsonForm);
@@ -128,7 +127,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
 
         Intent intent = new Intent(this,AddBooksManually.class);
-        Book clickedBook = adapter.getItem(position);
+        BookOld clickedBook = adapter.getItem(position);
         String bookInJsonForm = JsonHelper.bookToJson(clickedBook);
 
         intent.putExtra("bookInJsonForm",bookInJsonForm);
@@ -149,7 +148,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Thread lookupThread = new Thread(apiTask);
         lookupThread.start();
 
-        resultList = (List<Book>) apiTask.get();
+        resultList = (List<BookOld>) apiTask.get();
         showBooksOnRecyclerView();
 
         //TODO grab missing info from other isbns
@@ -163,7 +162,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         lookupThread.start();
 
         try {
-            resultList = (List<Book>) apiTask.get();
+            resultList = (List<BookOld>) apiTask.get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

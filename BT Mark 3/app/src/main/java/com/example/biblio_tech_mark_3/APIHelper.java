@@ -4,7 +4,6 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -19,14 +18,14 @@ public class APIHelper implements Callable<List<Book>> {
 
     private String title;
     private String ISBN; //can lookup 10 or 13
-    public List<Book> results;
+    public List<BookOld> results;
 
     public static String openLibURL = "http://openlibrary.org";
 //    public static String limit = "limit=5";
     public static String charset = "UTF-8";
 
     @Override
-    public List<Book> call() throws Exception {
+    public List<BookOld> call() throws Exception {
         Log.i(TAG,"starting API");
 
 
@@ -39,7 +38,7 @@ public class APIHelper implements Callable<List<Book>> {
         }
     }
 
-    protected List<Book> lookupTitle(String title){
+    protected List<BookOld> lookupTitle(String title){
         String formatedTitle = title.replaceAll("\\s+", "+");
         String query = String.format("%s/%s.json?title=%s", openLibURL, "search", formatedTitle);
         Log.i(TAG, query);
@@ -72,10 +71,10 @@ public class APIHelper implements Callable<List<Book>> {
                 for (String bookKey : bookKeys){
                     if (results.size() < 10) {
                         try {
-                            Book book = lookupKey(bookKey);
+                            BookOld book = lookupKey(bookKey);
                             results.add(book);
                         } catch (NullPointerException e){
-                            Log.i(TAG, "Null: " + e);
+                            Log.i(TAG, "" + e);
                         }
                     } else { break; }
                 }
@@ -90,7 +89,7 @@ public class APIHelper implements Callable<List<Book>> {
         return null;
     }
 
-    protected Book lookupKey(String key){
+    protected BookOld lookupKey(String key){
         String query = String.format("%s%s.json",openLibURL, key);
         Log.i(TAG, query);
 
@@ -104,11 +103,12 @@ public class APIHelper implements Callable<List<Book>> {
             {
                 String responseBody = scanner.useDelimiter("\\A").next();
 
-                Book test = JsonHelper.jsonToBook(responseBody);
+                BookOld test = JsonHelper.jsonToBook(responseBody);
+
                 Author authorName = LookupAuthor(test.getFirstAuthor().getKey());
                 test.setAuthor( authorName );
 
-//                Log.i(TAG, test.toString());
+                Log.i(TAG, test.toString());
 
                 return test;
             }
@@ -120,7 +120,7 @@ public class APIHelper implements Callable<List<Book>> {
         return null;
     }
 
-    protected List<Book> lookupISBN(String ISBN){
+    protected List<BookOld> lookupISBN(String ISBN){
         String query = String.format("%s/%s/%s.json",openLibURL, "isbn", ISBN);
         Log.i(TAG, query);
 
@@ -135,7 +135,7 @@ public class APIHelper implements Callable<List<Book>> {
                 String responseBody = scanner.useDelimiter("\\A").next();
                 Log.i(TAG, responseBody);
 
-                Book test = JsonHelper.jsonToBook(responseBody);
+                BookOld test = JsonHelper.jsonToBook(responseBody);
                 Author authorName = LookupAuthor(test.getFirstAuthor().getKey());
                 test.setAuthor( authorName );
 

@@ -3,33 +3,37 @@ package com.example.biblio_tech_mark_3;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 public class JsonHelper {
 /* This reads in the JSON from the API and gets into a our book class. */
     public static final String TAG = "JsonHelper";
 
-    public static String bookToJson(Book book){
+    public static String bookToJson(BookOld book){
         Log.i(TAG, "bookToJson");
         String bookInJsonForm;
         Gson gson = new Gson();
-        bookInJsonForm = gson.toJson(book, Book.class);
+        bookInJsonForm = gson.toJson(book, BookOld.class);
         return bookInJsonForm;
     }
 
-    public static Book jsonToBook(String json){
+    public static BookOld jsonToBook(String json){
         Log.i(TAG, "jsonToBook");
-        Book bookInBookForm = null;
+        BookOld bookInBookForm = null;
+
         Gson gson = new Gson();
         try {
-            bookInBookForm = gson.fromJson(json, Book.class);
+            bookInBookForm = gson.fromJson(json, BookOld.class);
+            Log.i(TAG,bookInBookForm.getTitle());
             return bookInBookForm;
         } catch (IllegalStateException e){
-            bookInBookForm.setTitle("This book did not load properly!");
-            return bookInBookForm;
+//            bookInBookForm.setTitle("This book did not load properly!");
+            return null;
         } catch (JsonSyntaxException e){
-            bookInBookForm.setTitle("This book did not load properly!");
-            return bookInBookForm;
+//            bookInBookForm.setTitle("This book did not load properly!");
+            return null;
         }
     }
 

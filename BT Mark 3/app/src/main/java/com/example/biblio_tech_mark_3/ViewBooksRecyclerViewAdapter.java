@@ -3,7 +3,6 @@ package com.example.biblio_tech_mark_3;
 /*From: https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example*/
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
 
     public static final String TAG = "ViewBooksRVAdapter: ";
 
-    private List<Book> mData;
+    private List<BookOld> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -37,7 +36,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Book book = mData.get(position);
+        BookOld book = mData.get(position);
         holder.myTextView.setText(book.toString());
     }
 
@@ -47,7 +46,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     }
 
     // convenience method for getting data at click position
-    Book getItem(int id) {
+    BookOld getItem(int id) {
         return mData.get(id);
     }
 

@@ -32,8 +32,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //    public static final String COLUMN_PAGES = "PAGES";
 //    public static final String COLUMN_OWNED = "OWNED";
 
-    public List<Book> getAllBooks(){
-        List<Book> returnList = new ArrayList<>();
+    public List<BookOld> getAllBooks(){
+        List<BookOld> returnList = new ArrayList<>();
 
         String queryString = "SELECT * FROM " + BOOK_TABLE; //this is where you construct the SQL query
 
@@ -54,7 +54,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 long bookISBN = cursor.getInt(5);
                 String bookNotes = cursor.getString(6);
 
-                Book newBook = new Book(bookID, bookTitle, bookAuthor, bookGenres, bookSubjects, bookISBN, bookNotes);
+                BookOld newBook = new BookOld(bookID, bookTitle, bookAuthor, bookGenres, bookSubjects, bookISBN, bookNotes);
                 returnList.add(newBook);
 
             } while (cursor.moveToNext());
@@ -65,7 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public boolean addOne(Book book) {
+    public boolean addOne(BookOld book) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -82,7 +82,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return insert != -1;
     }
 
-    public boolean deleteOne(Book book){
+    public boolean deleteOne(BookOld book){
 
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + BOOK_TABLE + " WHERE " + COLUMN_ID + " = " + book.getId();
