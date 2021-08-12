@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ManageShelvesActivity extends AppCompatActivity {
-
+/* This is just a write up of what we would like to work on more for our app. It has a finish button. */
     public static final String TAG = "ManageShelvesActivity: ";
 
     @Override

@@ -22,9 +22,11 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-
 public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyclerViewAdapter.ItemClickListener{
-
+/* AddBooksActivity comes up when the Add book button is pressed on the main screen. It has an input for a title or a button to get a
+   scanner to pull up to input that way. It displays books from the API in a recycleviewer. There is a button to manually add a book that
+   does not come up on the API list and a done button which will take you back to the main screen.
+ */
     EditText text;
     Button addISBNbutton;
     String ISBN;

@@ -8,7 +8,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 public class JsonHelper {
-
+/* This reads in the JSON from the API and gets into a our book class. */
     public static final String TAG = "JsonHelper";
 
     public static String bookToJson(BookOld book){

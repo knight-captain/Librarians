@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+/* This is the MainActivity or home screen. It has three buttons, an add book button, search and what we would like to add to future development.
+   On create the app loads the database
+ * */
     public static final String TAG = "MainActivity: ";
     public static final String EXTRA_MESSAGE = "com.example.biblio_tech_mark_3.MESSAGE";
 

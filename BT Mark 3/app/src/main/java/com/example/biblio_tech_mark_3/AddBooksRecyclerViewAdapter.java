@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRecyclerViewAdapter.ViewHolder> {
-
+/* this is the adapter for the add books recyclerview. */
     public static final String TAG = "AddBooksRVAdapter: ";
 
     private List<BookOld> mData;
