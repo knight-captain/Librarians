@@ -33,8 +33,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //    public static final String COLUMN_OWNED = "OWNED";
 
     public List<BookOld> getAllBooks(){
+        //TODO change to new Book
         List<BookOld> returnList = new ArrayList<>();
 
+        //todo is this where to also grab frmo other tables? IE shelves?
         String queryString = "SELECT * FROM " + BOOK_TABLE; //this is where you construct the SQL query
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -44,6 +46,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
             //loop through cursor and assign each item it's properties, and turn it into a book
             Log.i(TAG,"Starting cursor loop.");
+            //TODO make new Book
             do {
                 //title, author, List genres, List Subjects, int ISBN, longString Description
                 int bookID = cursor.getInt(0);
@@ -54,6 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 long bookISBN = cursor.getInt(5);
                 String bookNotes = cursor.getString(6);
 
+                //TODO change to new Book
                 BookOld newBook = new BookOld(bookID, bookTitle, bookAuthor, bookGenres, bookSubjects, bookISBN, bookNotes);
                 returnList.add(newBook);
 
@@ -66,10 +70,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addOne(BookOld book) {
+        //TODO change to new Book
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        //TODO make new Book
         //title, author, List genres, List Subjects, int ISBN, longString Description
         cv.put(COLUMN_BOOK_TITLE, book.getTitle());
         cv.put(COLUMN_AUTHOR, book.getAuthorName());
@@ -83,6 +88,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean deleteOne(BookOld book){
+        //TODO change to new Book
 
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + BOOK_TABLE + " WHERE " + COLUMN_ID + " = " + book.getId();
@@ -101,8 +107,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Called first time DB is accessed
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //TODO make new Book
         //create new table
         Log.i(TAG,"Creating DB (if there isn't one?)" );
+        //todo apparently there is no array in SQL, so fix this...
         String createTableStatement = "CREATE TABLE " + BOOK_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_BOOK_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_BOOK_GENRE + " TEXT, " + COLUMN_BOOK_SUBJECTS + " ARRAY, " + COLUMN_ISBN_13 + " BIGINT, " + COLUMN_NOTES + " TEXT)";
 
         db.execSQL(createTableStatement);

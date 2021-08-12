@@ -12,6 +12,7 @@ public class JsonHelper {
     public static final String TAG = "JsonHelper";
 
     public static String bookToJson(BookOld book){
+        //TODO change to new Book
         Log.i(TAG, "bookToJson");
         String bookInJsonForm;
         Gson gson = new Gson();
@@ -20,7 +21,9 @@ public class JsonHelper {
     }
 
     public static BookOld jsonToBook(String json){
+        //TODO change to new Book
         Log.i(TAG, "jsonToBook");
+        //TODO change to new Book
         BookOld bookInBookForm = null;
 
         Gson gson = new Gson();

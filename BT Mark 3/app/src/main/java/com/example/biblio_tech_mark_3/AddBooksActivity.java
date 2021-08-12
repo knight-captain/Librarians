@@ -36,6 +36,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
     RecyclerView recyclerView;
     AddBooksRecyclerViewAdapter adapter;
 
+    //TODO change to new Book
     List<BookOld> resultList;
 
     @Override
@@ -49,11 +50,6 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, message + " Received from Main");
 
         resultList = new ArrayList<>();
-
-//        //add a test book
-//        //title, author, List genres, List Subjects, int ISBN, longString Description
-//        Book testBook = new Book(1, "Search for a Title above!", null, null, null,1000000000000l, "Or scan an ISBN with your camara!");
-//        resultList.add(testBook);
 
         //The RecyclerView and its Adapter
         recyclerView = findViewById(R.id.possibleBooks);
@@ -114,6 +110,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         //open add manual activity
         Intent intent = new Intent(this,AddBooksManually.class);
 
+        //TODO change to new Book
         BookOld blankBook = new BookOld(-1,null, new Author(null),null,null, 9780671504397L,"This field intentionally left blank");
 
         String bookInJsonForm = JsonHelper.bookToJson(blankBook);
@@ -127,6 +124,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
 
         Intent intent = new Intent(this,AddBooksManually.class);
+        //TODO change to new Book
         BookOld clickedBook = adapter.getItem(position);
         String bookInJsonForm = JsonHelper.bookToJson(clickedBook);
 
@@ -148,6 +146,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         Thread lookupThread = new Thread(apiTask);
         lookupThread.start();
 
+        //TODO change to new Book
         resultList = (List<BookOld>) apiTask.get();
         showBooksOnRecyclerView();
 
@@ -162,6 +161,7 @@ public class AddBooksActivity extends AppCompatActivity implements AddBooksRecyc
         lookupThread.start();
 
         try {
+            //TODO change to new Book
             resultList = (List<BookOld>) apiTask.get();
         } catch (ExecutionException e) {
             e.printStackTrace();

@@ -16,12 +16,14 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
 /* this is the adapter for the add books recyclerview. */
     public static final String TAG = "AddBooksRVAdapter: ";
 
+    //TODO change to new Book
     private List<BookOld> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
     AddBooksRecyclerViewAdapter(Context context, List<BookOld> data) {
+        //TODO change to new Book
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -35,6 +37,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
 
     @Override
     public void onBindViewHolder(AddBooksRecyclerViewAdapter.ViewHolder holder, int position) {
+        //TODO change to new Book
         BookOld book = mData.get(position);
         holder.myTextView.setText(book.toString());
     }
@@ -44,6 +47,7 @@ public class AddBooksRecyclerViewAdapter extends RecyclerView.Adapter<AddBooksRe
     public int getItemCount() { return mData.size(); }
 
     // convenience method for getting data at click position
+    //TODO change to new Book
     BookOld getItem(int id) { return mData.get(id); }
 
     // allows clicks events to be caught
