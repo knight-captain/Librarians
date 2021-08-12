@@ -33,8 +33,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //    public static final String COLUMN_OWNED = "OWNED";
 
     public List<BookOld> getAllBooks(){
+        //TODO change to new Book
         List<BookOld> returnList = new ArrayList<>();
 
+        //todo is this where to also grab frmo other tables? IE shelves?
         String queryString = "SELECT * FROM " + BOOK_TABLE; //this is where you construct the SQL query
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -55,6 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 long bookISBN = cursor.getInt(5);
                 String bookNotes = cursor.getString(6);
 
+                //TODO change to new Book
                 BookOld newBook = new BookOld(bookID, bookTitle, bookAuthor, bookGenres, bookSubjects, bookISBN, bookNotes);
                 returnList.add(newBook);
 
@@ -67,6 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addOne(BookOld book) {
+        //TODO change to new Book
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -84,6 +88,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean deleteOne(BookOld book){
+        //TODO change to new Book
 
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + BOOK_TABLE + " WHERE " + COLUMN_ID + " = " + book.getId();

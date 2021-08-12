@@ -16,6 +16,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
 
     public static final String TAG = "ViewBooksRVAdapter: ";
 
+    //TODO change to new Book
     private List<BookOld> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
@@ -36,6 +37,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        //todo Change to nwe Book
         BookOld book = mData.get(position);
         holder.myTextView.setText(book.toString());
     }
@@ -46,6 +48,7 @@ public class ViewBooksRecyclerViewAdapter extends RecyclerView.Adapter<ViewBooks
     }
 
     // convenience method for getting data at click position
+    //TODO change to new Book
     BookOld getItem(int id) {
         return mData.get(id);
     }

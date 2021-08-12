@@ -20,6 +20,7 @@ public class AddBooksManually extends AppCompatActivity {
     public static final String TAG = "AddBooksManually";
 
     DataBaseHelper dataBaseHelper;
+    //TODO change to new Book
     BookOld book;
 
     EditText titleTV;
@@ -38,9 +39,11 @@ public class AddBooksManually extends AppCompatActivity {
         String bookInJsonForm = intent.getStringExtra("bookInJsonForm");
         book = JsonHelper.jsonToBook(bookInJsonForm);
 
+        //TODO change to new Book
         Log.i(TAG, "Got: " + book.getTitle() + " " + book.getAuthorName() + " " + book.getGenres() + " " + book.getSubjects() + " " + book.getISBN() + " " + book.getNotes());
 
         //TODO if book ISBN = -1, then leave stuff blank, otherwise fill in the entry fields with the passed book's info: this could be from AddBooks or from editing a book from the View books.
+        //TODO change to new Book
         if(book.getTitle() != null) {
             titleTV = (EditText)findViewById(R.id.titleManual);
             titleTV.setText(book.getTitle()/*, TextView.BufferType.EDITABLE*/);
@@ -85,15 +88,10 @@ public class AddBooksManually extends AppCompatActivity {
                 finish();
             }
         });
-
-//        Button manualButton = findViewById(R.id.manualButton);
-//        manualButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {addBookManually(); }
-//        });
-
     }
 
     public void addBookManually(){
+        //TODO change to new Book
         titleTV = (EditText) findViewById(R.id.titleManual);
         String title = titleTV.getText().toString();
 
