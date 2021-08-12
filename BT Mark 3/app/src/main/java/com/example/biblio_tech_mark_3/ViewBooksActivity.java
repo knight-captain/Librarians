@@ -63,7 +63,7 @@ public class ViewBooksActivity extends AppCompatActivity implements ViewBooksRec
     @Override
     public void onItemClick(View view, int position) {
         Log.i(TAG, "You clicked " + adapter.getItem(position) + " on row number " + position);
-//        dataBaseHelper.deleteOne(adapter.getItem(position));
+//        dataBaseHelper.deleteOne(adapter.getItem(position)); <--heheh...
         showBooksOnRecyclerView();
     }
 

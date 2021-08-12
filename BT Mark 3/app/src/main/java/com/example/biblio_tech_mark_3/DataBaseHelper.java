@@ -44,6 +44,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
             //loop through cursor and assign each item it's properties, and turn it into a book
             Log.i(TAG,"Starting cursor loop.");
+            //TODO make new Book
             do {
                 //title, author, List genres, List Subjects, int ISBN, longString Description
                 int bookID = cursor.getInt(0);
@@ -69,7 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
+        //TODO make new Book
         //title, author, List genres, List Subjects, int ISBN, longString Description
         cv.put(COLUMN_BOOK_TITLE, book.getTitle());
         cv.put(COLUMN_AUTHOR, book.getAuthorName());
@@ -101,6 +102,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //Called first time DB is accessed
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //TODO make new Book
         //create new table
         Log.i(TAG,"Creating DB (if there isn't one?)" );
         String createTableStatement = "CREATE TABLE " + BOOK_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_BOOK_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_BOOK_GENRE + " TEXT, " + COLUMN_BOOK_SUBJECTS + " ARRAY, " + COLUMN_ISBN_13 + " BIGINT, " + COLUMN_NOTES + " TEXT)";

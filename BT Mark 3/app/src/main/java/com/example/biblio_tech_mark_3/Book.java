@@ -4,29 +4,30 @@ import java.util.Date;
 import java.util.List;
 
 public class Book {
-    //todo set all to private and make necessary getters & setters
+    //todo make necessary getters & setters
     private List<String> publishers;
-    public Identifiers identifiers;
-    public List<Integer> covers;
-    public List<String> local_id;
-    public String physical_format;
-    public LastModified last_modified;
-    public int latest_revision;
-    public String key;
-    public List<Author> authors;
-    public String ocaid;
-    public String edition_name;
-    public List<Language> languages;
-    public List<String> source_records;
-    public String title;
-    public int number_of_pages;
-    public Created created;
-    public List<String> isbn_13;
-    public List<String> isbn_10;
-    public String publish_date;
-    public List<Work> works;
-    public Type type;
-    public int revision;
+    private Identifiers identifiers;
+    private List<Integer> covers;
+    private List<String> local_id;
+    private String physical_format;
+    private LastModified last_modified;
+    private int latest_revision;
+    private String key;
+    private List<Author> authors;
+    private String ocaid;
+    private String edition_name;
+    private List<Language> languages;
+    private List<String> source_records;
+    private String title;
+    private int number_of_pages;
+    private Created created;
+    private List<String> isbn_13;
+    private List<String> isbn_10;
+    private String publish_date;
+    //todo Get the Work to have a list of Books
+    private List<Work> works;
+    private Type type;
+    private int revision;
 }
 
 class Identifiers {

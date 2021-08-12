@@ -1,14 +1,14 @@
 package com.example.biblio_tech_mark_3;
 
 public class Author {
-    //todo set all to private and make necessary getters & setters
-    public String name;
-    public String personal_name;
-    public LastModified last_modified;
-    public String key;
-    public Type type;
-    public int id;
-    public int revision;
+    //todo make necessary getters & setters
+    private String name;
+    private String personal_name;
+    private LastModified last_modified;
+    private String key;
+    private Type type;
+    private int id;
+    private int revision;
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

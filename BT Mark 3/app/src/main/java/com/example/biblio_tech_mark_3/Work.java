@@ -3,21 +3,22 @@ package com.example.biblio_tech_mark_3;
 import java.util.List;
 
 public class Work {
-    //todo set all to private and make necessary getters & setters
-    public String description;
-    public String title;
-    public List<Integer> covers;
-    public List<String> subject_places;
-    public List<String> subjects;
-    public List<String> subject_people;
-    public String key;
-    public List<Author> authors;
-    public List<String> subject_times;
-    public Type type;
-    public int latest_revision;
-    public int revision;
-    public Created created;
-    public LastModified last_modified;
+    //todo necessary getters & setters
+    //todo Get the Work to have a list of Books
+    private String description;
+    private String title;
+    private List<Integer> covers;
+    private List<String> subject_places;
+    private List<String> subjects;
+    private List<String> subject_people;
+    private String key;
+    private List<Author> authors;
+    private List<String> subject_times;
+    private Type type;
+    private int latest_revision;
+    private int revision;
+    private Created created;
+    private LastModified last_modified;
 
     //todo initializer
 }
