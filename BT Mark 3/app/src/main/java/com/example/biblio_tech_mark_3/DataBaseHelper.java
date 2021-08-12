@@ -110,6 +110,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //TODO make new Book
         //create new table
         Log.i(TAG,"Creating DB (if there isn't one?)" );
+        //todo apparently there is no array in SQL, so fix this...
         String createTableStatement = "CREATE TABLE " + BOOK_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_BOOK_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_BOOK_GENRE + " TEXT, " + COLUMN_BOOK_SUBJECTS + " ARRAY, " + COLUMN_ISBN_13 + " BIGINT, " + COLUMN_NOTES + " TEXT)";
 
         db.execSQL(createTableStatement);
